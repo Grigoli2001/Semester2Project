@@ -1,0 +1,50 @@
+.container {
+  display: flex;
+  flex-direction: column;
+}
+.content {
+  display: flex;
+  flex-direction: row;
+}
+.students {
+  flex: 1;
+}
+.courses {
+  flex: 1;
+}
+table {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+table,
+th,
+td {
+  border: 1px solid #ccc;
+}
+
+th,
+td {
+  padding: 8px;
+  text-align: left;
+}
+
+/* Header styles */
+th {
+  background-color: #f2f2f2;
+}
+
+/* Alternate row colors */
+tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
+
+/* Highlight on hover */
+tr:hover {
+  background-color: #e2e2e2;
+}
+
+/* Make the first column bold */
+td:first-child {
+  font-weight: bold;
+}

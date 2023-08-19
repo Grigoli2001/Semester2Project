@@ -1,0 +1,16 @@
+/* Page Content */
+
+.container {
+  display: flex;
+  flex-direction: column;
+  outline: black dotted;
+}
+.welcome {
+  display: flex;
+  justify-content: center;
+  outline: red dotted;
+}
+.welcome > p {
+  font-size: larger;
+  font-family: Arial, Helvetica, sans-serif;
+}

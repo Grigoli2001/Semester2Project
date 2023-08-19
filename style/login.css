@@ -1,0 +1,242 @@
+html{
+  margin: 0;
+  padding: 0;
+}
+body{
+  margin: 0;
+  padding: 0;
+}
+.container_login {
+  padding: 0;
+  margin: 0;
+  margin-top: 0;
+  margin-left: 0;
+  height: 100vh;
+  width: 100%;
+  background: linear-gradient(
+    11deg,
+    rgba(13, 8, 106, 1) 0%,
+    rgba(14, 26, 110, 0.9920343137254902) 24%,
+    rgba(29, 80, 191, 1) 51%,
+    rgba(31, 79, 192, 1) 66%,
+    rgba(0, 86, 173, 1) 70%,
+    rgba(33, 79, 193, 1) 100%,
+    rgba(0, 212, 255, 1) 100%
+  );
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+.login_nav {
+  /* margin-top: 0; */
+  background-color: rgb(255, 255, 255);
+  height: 10%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+.login_nav > a > img {
+  height: 85px;
+  /* background-color: aqua; */
+}
+.nav_btn {
+  height: 100%;
+  display: flex;
+  width: 100%;
+  justify-content: flex-end;
+  align-items: center;
+  align-content: center;
+  /* justify-content: space-around; */
+}
+.nav_btn > button {
+  height: 50%;
+  background-color: white;
+  border: 0;
+  cursor: pointer;
+  margin-right: 3%;
+  font-size: large;
+}
+.nav_btn > button:hover {
+  color: gray;
+  text-decoration: underline;
+}
+.login_box {
+  margin-top: 120px;
+  height: 85%;
+  width: 55%;
+  display: flex;
+  flex-direction: column;
+  align-self: center;
+  background-color: white;
+  margin-bottom: 2%;
+}
+.login_box > form {
+  display: flex;
+  flex-direction: column;
+}
+.welcome_login {
+  height: 30%;
+  align-self: center;
+}
+.welcome_login > img {
+  height: 100%;
+  width: 100%;
+}
+.welcome_text_login {
+  text-align: center;
+}
+.welcome_text_login > h2 {
+  margin: 0;
+  align-self: center;
+  font-size: xx-large;
+  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+    "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+}
+.welcome_text_login > p {
+  margin: 0;
+  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+    "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+  font-size: small;
+}
+.login_form {
+  width: 50%;
+
+  margin-top: 4%;
+  /* outline: blue dotted; */
+  height: 30%;
+  align-items: center;
+  align-self: center;
+}
+.login_form > input {
+  width: 90%;
+  height: 20%;
+  font-size: larger;
+  margin-top: 2%;
+  border: 1px solid rgb(218, 214, 214);
+  border-radius: 5px;
+  padding-left: 5%;
+}
+.login_form > button {
+  text-decoration: none;
+  background-color: rgb(26, 10, 245);
+  border: 0;
+  color: white;
+  width: 30%;
+  height: 20%;
+  font-size: large;
+  border-radius: 10px;
+  cursor: pointer;
+  margin-top: 3%;
+}
+.login_form > button:hover {
+  color: blue;
+  background-color: white;
+  transition: 300ms ease-in-out;
+}
+.below_input {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  margin-bottom: 2%;
+  margin-top: 2%;
+}
+.below_input > input {
+  margin-left: 4%;
+}
+.below_input > span {
+  width: 100%;
+}
+.below_input > a {
+  width: 100%;
+  text-align: end;
+  padding-right: 4%;
+  text-decoration: none;
+  color: black;
+}
+.below_input > a:hover {
+  color: rgb(138, 138, 138);
+  text-decoration: underline;
+}
+
+.login_form_bottom {
+  width: 100%;
+  text-align: center;
+
+  /* outline: red dotted; */
+}
+.login_form_bottom > p {
+  font-size: larger;
+  font-family: Arial, Helvetica, sans-serif;
+  color: rgb(37, 37, 37);
+}
+.signInWith {
+  width: 100%;
+  height: 30%;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  /* outline: brown dotted; */
+}
+.signInWith > a {
+  width: 5%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: none;
+  border-radius: 50%;
+  background-color: blue;
+  margin: 0 6%;
+}
+.signInWith > a:nth-child(2) {
+  margin-right: 6%;
+  margin-left: 6%;
+}
+.signInWith > a > svg {
+  height: 50%;
+  color: white;
+}
+.signInWith > a:nth-child(2) > svg {
+  height: 50%;
+}
+.signInWith > a:hover {
+  background-color: white;
+  transition: 300ms ease-in-out;
+}
+
+.signInWith > a:hover > svg {
+  color: blue;
+  transition: 300ms ease-in-out;
+}
+
+.reg_div > button {
+  border: 0;
+  background-color: white;
+  color: blue;
+}
+.reg_div > button:hover {
+  text-decoration: underline;
+  cursor: pointer;
+}
+/* FOOTER */
+.login_footer {
+  background: rgb(6, 5, 18);
+  background: linear-gradient(
+    100deg,
+    rgba(6, 5, 18, 1) 0%,
+    rgba(0, 0, 1, 0.9920343137254902) 4%,
+    rgba(9, 23, 57, 1) 31%,
+    rgba(12, 33, 78, 1) 100%,
+    rgba(6, 19, 50, 1) 100%,
+    rgba(0, 212, 255, 1) 100%
+  );
+  margin: 0;
+}
+.login_footer > p {
+  margin: 0;
+  color: white;
+}

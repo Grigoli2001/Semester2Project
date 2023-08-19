@@ -1,0 +1,14 @@
+<?php
+// Start the session
+session_start();
+
+// Unset all session variables
+$_SESSION = array();
+
+// Destroy the session
+session_destroy();
+
+// Redirect to home2.php
+header("Location: ../home.php");
+exit; // Make sure to add 'exit' after redirecting to prevent further script execution
+?>
