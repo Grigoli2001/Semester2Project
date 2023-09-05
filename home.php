@@ -23,7 +23,10 @@ if (empty($_SESSION['user_id'])) {
 
 <body>
     <nav id="navbar">
-        <button>Home</button>
+        <div class="back-btn">
+
+            <button onclick="location.reload()">HOME</button>
+        </div>
         <div class="nav_logo">
             <a href="">
                 <img src="assets/EPITA School of Engineering and Computer Science_Logo.png" alt="" />
@@ -42,48 +45,61 @@ if (empty($_SESSION['user_id'])) {
             </button>
         </form>
     </nav>
-    <div class="container">
-        <div class="welcome">
-            <p>Welcome, </p>
-            <p style="font-weight: bolder;">
-                <?php
-                echo $_SESSION['user_id'];
-                ?>
-            </p>
-        </div>
-        <div class="program-list">
-            <h1>Active Populations</h1>
+    <div class="welcome">
+        <p>Welcome, </p>
+        <p style="font-weight: bolder;">
             <?php
-            require_once "php/connect.php";
-            require_once "php/popcount.php";
-            $conn = conn();
-            $sql = "SELECT * FROM populations";
-            $result = $conn->query($sql);
-
-            while ($row = $result->fetch_assoc()) {
-                $popcount = pop_count($row['population_year'], $row['population_code'], $row['population_period'], $conn);
-                echo ("<a href='population.php?code=" . $row['population_code'] .
-                    "&year=" . $row['population_year'] .
-                    "&intake=" . $row['population_period'] .
-                    "'><p>" . $row['population_code'] . " " . $row['population_year'] . " " . $row['population_period'] . " (" . $popcount . ")</p></a>");
-            }
-
-
+            echo $_SESSION['user_name'];
             ?>
+        </p>
+    </div>
+    <div class="container">
+        <div class="program-list">
+            <div class="list">
+
+                <h1>Active Populations</h1>
+                <?php
+                require_once "php/connect.php";
+                require_once "php/popcount.php";
+                $conn = conn();
+                $sql = "SELECT * FROM populations";
+                $result = $conn->query($sql);
+
+                echo ("<ul>");
+                while ($row = $result->fetch_assoc()) {
+                    $popcount = pop_count($row['population_year'], $row['population_code'], $row['population_period'], $conn);
+                    echo ("<li><a class='pop-list' href='population.php?code=" . $row['population_code'] .
+                        "&year=" . $row['population_year'] .
+                        "&intake=" . $row['population_period'] .
+                        "'>" . $row['population_code'] . " " . $row['population_year'] . " " . $row['population_period'] . " (" . $popcount . ")</a></li>");
+                }
+                echo ("</ul>");
+
+                ?>
+            </div>
+            <div class="chart">
+                <canvas id="courseChart"></canvas>
+            </div>
         </div>
         <div class="attendance">
-            <h1>Overall Attendance</h1>
-            <?php
-            require_once "php/connect.php";
-            require_once "php/attendance.php";
-            $conn = conn();
-            $sql = "SELECT * FROM populations";
-            $result = $conn->query($sql);
-            while ($row = $result->fetch_assoc()) {
-                $attentance = attendance($row['population_year'], $row['population_code'], $row['population_period'], $conn);
-                echo ("<p>" . $row['population_code'] . " " . $row['population_year'] . " " . $row['population_period'] . " (" . $attentance . "%)</p>");
-            }
-            ?>
+            <div class="list">
+
+                <h1>Overall Attendance</h1>
+                <?php
+                require_once "php/connect.php";
+                require_once "php/attendance.php";
+                $conn = conn();
+                $sql = "SELECT * FROM populations";
+                $result = $conn->query($sql);
+                while ($row = $result->fetch_assoc()) {
+                    $attentance = attendance($row['population_year'], $row['population_code'], $row['population_period'], $conn);
+                    echo ("<p>" . $row['population_code'] . " " . $row['population_year'] . " " . $row['population_period'] . " (" . $attentance . "%)</p>");
+                }
+                ?>
+            </div>
+            <div class="chart">
+                <canvas id="attChart" width="440" height="400"></canvas>
+            </div>
         </div>
     </div>
 
@@ -91,12 +107,118 @@ if (empty($_SESSION['user_id'])) {
 
 
     <?php $conn->close() ?>
+    <script src="JS\navbar.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script>
-        const navbarHeight = document.getElementById("navbar").offsetHeight;
+        const ctx = document.getElementById('courseChart');
 
-        // Set the top margin of the .container_home class
-        const containerHome = document.querySelector(".container_home");
-        containerHome.style.marginTop = `${navbarHeight + 10}px`;
+        // Get the population data from PHP and format it as an array
+        const populationData = [
+            <?php
+            $conn = conn();
+            $sql = "SELECT * FROM populations";
+            $result = $conn->query($sql);
+
+            while ($row = $result->fetch_assoc()) {
+                $popcount = pop_count($row['population_year'], $row['population_code'], $row['population_period'], $conn);
+                echo $popcount . ",";
+            }
+            $conn->close();
+            ?>
+        ];
+
+        // Create the doughnut chart
+        new Chart(ctx, {
+            type: 'polarArea',
+            data: {
+                labels: [
+                    <?php
+                    $conn = conn();
+                    $sql = "SELECT * FROM populations";
+                    $result = $conn->query($sql);
+
+                    while ($row = $result->fetch_assoc()) {
+                        echo "'" . $row['population_code'] . " " . $row['population_year'] . " " . $row['population_period'] . "',";
+                    }
+                    $conn->close();
+                    ?>
+                ],
+                datasets: [{
+                    label: 'Active Populations',
+                    data: populationData,
+                    backgroundColor: [
+                        'rgb(255, 99, 132, 1)',
+                        'rgba(54, 162, 235, 1)',
+                        'rgba(255, 206, 86, 1)',
+                        'rgba(75, 192, 192, 1)',
+                        'rgba(153, 102, 255, 1)',
+                    ],
+                    borderColor: [
+                        'rgba(255, 99, 132, 1)',
+                        'rgba(54, 162, 235, 1)',
+                        'rgba(255, 206, 86, 1)',
+                        'rgba(75, 192, 192, 1)',
+                        'rgba(153, 102, 255, 1)',
+                    ],
+                    borderWidth: 1,
+                }],
+            },
+        });
+    </script>
+    <script>
+        // Select the canvas element
+        const ctx2 = document.getElementById('attChart');
+
+        // Get the attendance data from PHP and format it as an array
+        const attendanceData = [
+            <?php
+            $conn = conn();
+            $sql = "SELECT * FROM populations";
+            $result = $conn->query($sql);
+
+            while ($row = $result->fetch_assoc()) {
+                $attendance = attendance($row['population_year'], $row['population_code'], $row['population_period'], $conn);
+                echo $attendance . ",";
+            }
+            $conn->close();
+            ?>
+        ];
+
+        // Create the bar chart
+        new Chart(ctx2, {
+            type: 'bar',
+            data: {
+                labels: [
+                    <?php
+                    $conn = conn();
+                    $sql = "SELECT * FROM populations";
+                    $result = $conn->query($sql);
+
+                    while ($row = $result->fetch_assoc()) {
+                        echo "'" . $row['population_code'] . " " . $row['population_year'] . " " . $row['population_period'] . "',";
+                    }
+                    $conn->close();
+                    ?>
+                ],
+                datasets: [{
+                    label: 'Attendance Percentage',
+                    data: attendanceData,
+                    backgroundColor: 'rgba(54, 162, 235, 0.6)', // You can customize the color
+                    borderColor: 'rgba(54, 162, 235, 1)',
+                    borderWidth: 1,
+                }],
+            },
+            options: {
+                responsive: false,
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        max: 100, // Set the maximum value on the y-axis (percentage)
+                    },
+                },
+            },
+        });
+
     </script>
 </body>
 

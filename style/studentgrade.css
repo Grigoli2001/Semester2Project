@@ -1,0 +1,30 @@
+table {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+th,
+td {
+  padding: 8px;
+  text-align: left;
+}
+
+/* Header styles */
+th {
+  background-color: rgb(212, 244, 255);
+}
+
+/* Alternate row colors */
+tr:nth-child(even) {
+  background-color: rgb(212, 244, 255);
+}
+
+/* Highlight on hover */
+tr:hover {
+  background-color: rgb(179, 236, 255);
+}
+
+/* Make the first column bold */
+td:first-child {
+  font-weight: bold;
+}

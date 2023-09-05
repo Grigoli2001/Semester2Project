@@ -1,5 +1,7 @@
-<?php 
-function conn(){
+<?php
+
+function conn()
+{
 
     $servername = "localhost";
     $username = "root";
@@ -8,4 +10,4 @@ function conn(){
     $conn = new mysqli($servername, $username, $password, $dbname);
     return $conn;
 }
-                ?>
+?>

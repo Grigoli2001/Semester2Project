@@ -1,4 +1,6 @@
 <?php
+session_start();
+
 // Replace the following database credentials with your own
 $servername = "localhost";
 $username = "root";

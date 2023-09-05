@@ -1,32 +1,34 @@
+var emailInput = document.getElementById("email");
+var passwrdInput = document.getElementById("passwrd");
 
-var close_btn = document.getElementById('closebut')
-var error_msg = document.getElementById('error')
-if (close_btn){
-close_btn.addEventListener('click',() => {
-    error_msg.style.visibility = 'hidden' 
-})
+const inputFields = () => {
+  if (emailInput.value != "") {
+    emailInput.classList.remove("error-input");
+  }
+  if (passwrdInput.value != "") {
+    passwrdInput.classList.remove("error-input");
+  }
+};
+function validateForm() {
+  // For example, check if email and password are not empty
+
+  // If validation fails, add the error-input class to the fields and return false
+
+  if (!emailInput.value.trim()) {
+    emailInput.classList.add("error-input");
+    return false;
+  }
+
+  if (!passwrdInput.value.trim()) {
+    passwrdInput.classList.add("error-input");
+    return false;
+  }
+
+  // If validation passes, submit the form
+  return true;
 }
-
-
-
-var password = document.getElementById("reg_password")
-
-var conf_password = document.getElementById("conf_password");
-var conf_password_span = document.getElementById("conf_password_span")
-function check_pass(){
-    if(password.value === conf_password.value){
-        conf_password_span.style.top = '30px';
-        conf_password_span.style.color = 'green';
-    }else{
-        conf_password_span.style.top = '30px';
-        conf_password_span.style.color = 'red';
-
+function displayErrorMessage(message) {
+  var errorMessageContainer = document.getElementById("error_message");
+  errorMessageContainer.innerText = message;
+  errorMessageContainer.style.display = "block";
 }
-
-}
-// if (card[0].style.visibility = "visible"){
-//     container[0].addEventListener('click',()=> {
-//         card[0].style.visibility = "hidden"
-//         container[0].style.filter = "blur(0px)"
-// })
-// }

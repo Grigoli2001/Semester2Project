@@ -1,4 +1,6 @@
 <?php
+
+
 function pop_count($year, $course, $intake, $conn)
 {
     // Prepare the SQL query with placeholders for the parameters

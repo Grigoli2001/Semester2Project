@@ -1,3 +1,7 @@
+body {
+  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+    "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+}
 .container {
   display: flex;
   flex-direction: column;
@@ -5,22 +9,472 @@
 .content {
   display: flex;
   flex-direction: row;
+  position: relative;
 }
 .students {
   flex: 1;
 }
+.add_search_student_container {
+  display: flex;
+  flex-direction: row;
+}
+.add_student {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.2em;
+  font-family: inherit;
+  font-weight: 600;
+  font-size: 16px;
+  padding: 0.5em 1.5em;
+  color: white;
+  background: blue;
+  border: none;
+  outline: none;
+  border-bottom: 3px solid rgb(2, 13, 167);
+  box-shadow: 0 0.5em 0.5em -0.4em rgb(0, 0, 0, 0.5);
+  letter-spacing: 0.08em;
+  border-radius: 20em;
+  cursor: pointer;
+  transition: 0.5s;
+}
+.add_student:hover {
+  filter: brightness(1.2);
+  color: rgb(0, 0, 0, 0.5);
+}
+.add_student:active {
+  transition: 0s;
+  transform: rotate(-10deg);
+}
+/* add course */
+.add_search_courses_container {
+  display: flex;
+  flex-direction: row;
+}
+.add_course {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.2em;
+  font-family: inherit;
+  font-weight: 600;
+  font-size: 16px;
+  padding: 0.5em 1.5em;
+  color: white;
+  background: blue;
+  border: none;
+  outline: none;
+  border-bottom: 3px solid rgb(2, 13, 167);
+  box-shadow: 0 0.5em 0.5em -0.4em rgb(0, 0, 0, 0.5);
+  letter-spacing: 0.08em;
+  border-radius: 20em;
+  cursor: pointer;
+  transition: 0.5s;
+}
+.add_course:hover {
+  filter: brightness(1.2);
+  color: rgb(0, 0, 0, 0.5);
+}
+.add_course:active {
+  transition: 0s;
+  transform: rotate(-10deg);
+}
+/* search button */
+.search-input-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 15px;
+  position: relative;
+}
+
+.search-input {
+  border-style: none;
+  height: 40px;
+  width: 0px;
+  padding: 10px;
+  outline: none;
+  border-radius: 50%;
+  transition: 0.5s ease-in-out;
+  background-color: blue;
+  box-shadow: 0px 0px 3px #f3f3f3;
+  padding-right: 40px;
+  color: #000000;
+}
+
+.search-input::placeholder,
+.search-input {
+  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+    "Lucida Sans", Arial, sans-serif;
+  font-size: 17px;
+}
+
+.search-input::placeholder {
+  color: #8f8f8f;
+}
+
+.search-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  right: 0px;
+  cursor: pointer;
+  width: 50px;
+  height: 50px;
+  outline: none;
+  border-style: none;
+  border-radius: 50%;
+  pointer-events: painted;
+  background-color: transparent;
+  transition: 0.2s linear;
+}
+.search-icon > i {
+  font-size: medium;
+  transition: 0.2s linear;
+  color: white;
+}
+.search-icon:hover > i {
+  font-size: x-large;
+}
+.search-icon:focus ~ .search-input,
+.search-input:focus {
+  box-shadow: none;
+  width: 250px;
+  border-radius: 0px;
+  background-color: transparent;
+  border-bottom: 3px solid blue;
+  transition: all 500ms cubic-bezier(0, 0.11, 0.35, 2);
+}
+.search-input:focus + .search-icon > i {
+  color: black;
+}
+.search-icon:focus-within > i {
+  color: black;
+}
+.focused {
+  box-shadow: none;
+  width: 250px;
+  border-radius: 0px;
+  background-color: transparent;
+  border-bottom: 3px solid blue;
+  transition: all 500ms cubic-bezier(0, 0.11, 0.35, 2);
+}
+.focused .search-icon > i {
+  color: black;
+}
+.focused + .search-icon > i {
+  color: black;
+}
+
+/*  */
+/* popup */
+/* Add styles for the popup */
+.add_student_popup {
+  display: none;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  padding: 20px;
+  background-color: #fff;
+
+  border-radius: 10px;
+  box-shadow: 0 5px 15px rgba(0, 0, 255, 0.7);
+  z-index: 1000;
+}
+.popupHeader {
+  width: 100%;
+  cursor: grab;
+}
+.add_student_popup.show {
+  display: flex;
+  flex-direction: column;
+}
+/* 
+.add_student_form > input {
+  width: 100%;
+}
+.add_student_form > div {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+.add_student_form > div > input {
+  width: 100%;
+}
+.add_student_form {
+  display: flex;
+  flex-direction: column;
+} */
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  max-width: 500px;
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 20px;
+  position: relative;
+}
+
+.title {
+  font-size: 28px;
+  color: royalblue;
+  font-weight: 600;
+  letter-spacing: -1px;
+  position: relative;
+  display: flex;
+  align-items: center;
+  padding-left: 30px;
+}
+
+.title::before,
+.title::after {
+  position: absolute;
+  content: "";
+  height: 16px;
+  width: 16px;
+  border-radius: 50%;
+  left: 0px;
+  background-color: royalblue;
+}
+
+.title::before {
+  width: 18px;
+  height: 18px;
+  background-color: royalblue;
+}
+
+.title::after {
+  width: 18px;
+  height: 18px;
+  animation: pulse 1s linear infinite;
+}
+
+.signin {
+  text-align: center;
+}
+
+.signin a {
+  color: royalblue;
+}
+
+.signin a:hover {
+  text-decoration: underline royalblue;
+}
+
+.flex {
+  display: flex;
+  width: 100%;
+  gap: 6px;
+}
+
+.form label {
+  position: relative;
+}
+
+.form label .input {
+  width: 92%;
+  padding: 10px 10px 20px 10px;
+  outline: 0;
+  border: 1px solid rgba(105, 105, 105, 0.397);
+  border-radius: 10px;
+}
+
+.form label .input + span {
+  position: absolute;
+  left: 10px;
+  top: 15px;
+  color: grey;
+  font-size: 0.9em;
+  cursor: text;
+  transition: 0.3s ease;
+}
+
+.form label .input:placeholder-shown + span {
+  top: 15px;
+  font-size: 0.9em;
+}
+
+.form label .input:focus + span,
+.form label .input:valid + span {
+  top: 30px;
+  font-size: 0.7em;
+  font-weight: 600;
+}
+
+.form label .input:valid + span {
+  color: green;
+}
+.birthdate-div {
+  display: flex;
+  flex-direction: row;
+}
+.select {
+  width: auto;
+  margin-right: 10px;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 16px;
+  width: 100%;
+}
+.select_country {
+  width: auto;
+  margin-right: 10px;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 16px;
+  width: 98%;
+  margin-bottom: 10px;
+}
+
+.submit {
+  border: none;
+  outline: none;
+  background-color: royalblue;
+  padding: 10px;
+  border-radius: 10px;
+  color: #fff;
+  font-size: 16px;
+  transform: 0.3s ease;
+}
+
+.submit:hover {
+  background-color: rgb(56, 90, 194);
+}
+
+@keyframes pulse {
+  from {
+    transform: scale(0.9);
+    opacity: 1;
+  }
+
+  to {
+    transform: scale(1.8);
+    opacity: 0;
+  }
+}
+
+#add_student_popup_close_img {
+  height: 20px;
+  width: 20px;
+  cursor: pointer;
+}
+/* Dim the background when the popup is shown */
+.content.show-popup::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 999;
+}
+
+@keyframes shakeBack {
+  0% {
+    transform: translate(-100%, 100%);
+  }
+
+  50% {
+    transform: translate(20%, -20%);
+  }
+
+  100% {
+    transform: translate(0%, 0%);
+  }
+}
+/* course popup */
+.add_course_popup {
+  display: none;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  padding: 20px;
+  background-color: white;
+  border-radius: 10px;
+  box-shadow: 0 5px 15px rgba(0, 0, 255, 0.7);
+
+  z-index: 1000;
+}
+.add_course_popup.show {
+  display: flex;
+  flex-direction: column;
+}
+.add-courseforminput-wrapper {
+  display: flex;
+  flex-direction: column;
+}
+
+.add-courseforminput-wrapper > label {
+  margin: 5px;
+}
+.add-courseforminput-wrapper > input {
+  margin: 5px;
+  border: 2px solid #ccc;
+  height: 34px;
+  border-radius: 5px;
+  font-size: x-large;
+}
+.add-courseforminput-wrapper > select {
+  margin-bottom: 10px;
+}
+.add_course_form > button {
+  width: 100%;
+}
+.select_coursename {
+  width: auto;
+  margin-right: 10px;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 16px;
+  width: 100%;
+}
+.select_teacher {
+  width: auto;
+  margin-right: 10px;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 16px;
+  width: 100%;
+}
+#add_course_popup_close_img {
+  height: 20px;
+  width: 20px;
+  cursor: pointer;
+}
+textarea {
+  border: 1px solid #ccc;
+  padding: 10px;
+  border-radius: 5px;
+  font-size: x-large;
+  margin-bottom: 10px;
+  resize: none;
+}
+.add-existing-course {
+  display: none;
+}
+.add-new-course {
+  display: none;
+}
+
+/* endpopup */
+
 .courses {
   flex: 1;
+  margin-left: 20px;
 }
 table {
   border-collapse: collapse;
   width: 100%;
-}
-
-table,
-th,
-td {
-  border: 1px solid #ccc;
 }
 
 th,
@@ -31,20 +485,89 @@ td {
 
 /* Header styles */
 th {
-  background-color: #f2f2f2;
+  background-color: rgb(212, 244, 255);
 }
 
 /* Alternate row colors */
 tr:nth-child(even) {
-  background-color: #f9f9f9;
+  background-color: rgb(212, 244, 255);
 }
 
 /* Highlight on hover */
 tr:hover {
-  background-color: #e2e2e2;
+  background-color: rgb(179, 236, 255);
 }
 
 /* Make the first column bold */
 td:first-child {
   font-weight: bold;
+}
+
+.add-course-question {
+  display: flex;
+  flex-direction: column;
+}
+.add-course-question > button {
+  width: 300px;
+  height: 50px;
+  background: none;
+  border: none;
+  background-color: rgba(0, 0, 255, 0.9);
+  margin-top: 20px;
+  margin-bottom: 20px;
+  color: #fff;
+  cursor: pointer;
+}
+.add-course-question > button:hover {
+  background-color: rgb(61, 61, 253);
+}
+
+/* Edit and Trash buttons */
+
+/* .trash-button,
+.edit-button {
+  background: none;
+  border: none;
+  margin-right: 3px;
+} */
+/* Styling for the "Edit" button */
+.edit-button {
+  background-color: #3498db; /* Change this color to your desired button color */
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  padding: 5px 10px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.edit-button:hover {
+  background-color: #2980b9; /* Change this color to the hover color */
+}
+
+/* Styling for the "Trash" button */
+.trash-button {
+  background-color: #e74c3c; /* Change this color to your desired button color */
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  padding: 5px 10px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.trash-button:hover {
+  background-color: #c52f1e; /* Change this color to the hover color */
+}
+
+/* Center the buttons vertically and horizontally within the cell */
+td button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  width: 100%;
+  border: none;
+  background: none;
+  padding: 0;
 }
