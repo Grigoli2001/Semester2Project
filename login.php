@@ -17,7 +17,7 @@ session_start();
 
   <div class="container_login">
     <nav class="login_nav">
-      <a href="/">
+      <a href="login.php">
         <img src="assets/EPITA School of Engineering and Computer Science_Logo.png" alt="" />
       </a>
       <div class="nav_btn">
