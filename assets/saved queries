@@ -1,23 +1,24 @@
 SELECT s.student_epita_email, c.contact_first_name,c.contact_last_name,
-c2.course_name,g.grade_score 
-FROM grades g 
-JOIN students s ON g.grade_student_epita_email_ref = s.student_epita_email 
-JOIN contacts c ON s.student_contact_ref = c.contact_email 
-JOIN courses c2 ON g.grade_course_code_ref = c2.course_code 
-WHERE c2.course_name = 'Relational Databases' 
-AND s.student_population_code_ref = 'AIs' 
-AND s.student_population_year_ref = 2020 
+c2.course_name,g.grade_score
+FROM grades g
+JOIN students s ON g.grade_student_epita_email_ref = s.student_epita_email
+JOIN contacts c ON s.student_contact_ref = c.contact_email
+JOIN courses c2 ON g.grade_course_code_ref = c2.course_code
+WHERE c2.course_name = 'Relational Databases'
+AND s.student_population_code_ref = 'AIs'
+AND s.student_population_year_ref = 2020
 AND s.student_population_period_ref = 'FALL';
 
 
-SELECT s.STUDENT_EPITA_EMAIL ,c.CONTACT_FIRST_NAME ,c.CONTACT_LAST_NAME ,c2.COURSE_NAME ,round(SUM(g.GRADE_SCORE*e.EXAM_WEIGHT)/SUM(e.EXAM_WEIGHT),2) as grade
-                FROM STUDENTS s JOIN CONTACTS c ON s.STUDENT_CONTACT_REF = c.CONTACT_EMAIL 
-                JOIN GRADES g ON s.STUDENT_EPITA_EMAIL = g.GRADE_STUDENT_EPITA_EMAIL_REF 
-                JOIN EXAMS e ON g.GRADE_COURSE_CODE_REF = e.EXAM_COURSE_CODE 
-                JOIN COURSES c2 ON e.EXAM_COURSE_CODE = c2.COURSE_CODE 
-                WHERE s.STUDENT_POPULATION_CODE_REF = '" . $code . "' AND s.STUDENT_POPULATION_YEAR_REF = " . $year . " 
-                AND s.STUDENT_POPULATION_PERIOD_REF LIKE  '" . $intake . "' AND e.EXAM_COURSE_CODE LIKE '" . $course_name . "' 
-                GROUP BY STUDENT_EPITA_EMAIL, e.EXAM_COURSE_CODE
+SELECT s.STUDENT_EPITA_EMAIL ,c.CONTACT_FIRST_NAME ,c.CONTACT_LAST_NAME ,c2.COURSE_NAME
+,round(SUM(g.GRADE_SCORE*e.EXAM_WEIGHT)/SUM(e.EXAM_WEIGHT),2) as grade
+FROM STUDENTS s JOIN CONTACTS c ON s.STUDENT_CONTACT_REF = c.CONTACT_EMAIL
+JOIN GRADES g ON s.STUDENT_EPITA_EMAIL = g.GRADE_STUDENT_EPITA_EMAIL_REF
+JOIN EXAMS e ON g.GRADE_COURSE_CODE_REF = e.EXAM_COURSE_CODE
+JOIN COURSES c2 ON e.EXAM_COURSE_CODE = c2.COURSE_CODE
+WHERE s.STUDENT_POPULATION_CODE_REF = '" . $code . "' AND s.STUDENT_POPULATION_YEAR_REF = " . $year . "
+AND s.STUDENT_POPULATION_PERIOD_REF LIKE '" . $intake . "' AND e.EXAM_COURSE_CODE LIKE '" . $course_name . "'
+GROUP BY STUDENT_EPITA_EMAIL, e.EXAM_COURSE_CODE
 
 
 
@@ -31,7 +32,7 @@ SELECT s.STUDENT_EPITA_EMAIL ,c.CONTACT_FIRST_NAME ,c.CONTACT_LAST_NAME ,c2.COUR
 
 
 
-  <!-- <h3>Add Student</h3>
+<!-- <h3>Add Student</h3>
                 <form method="post" class="add_student_form" id="addStudentForm">
                     <div class="student-name">
                         <input type="text" name="firstname" placeholder="First Name">
@@ -82,3 +83,27 @@ SELECT s.STUDENT_EPITA_EMAIL ,c.CONTACT_FIRST_NAME ,c.CONTACT_LAST_NAME ,c2.COUR
                     </select>
                     <button type="submit">Add Student</button>
                 </form> -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+SELECT
+c.COURSE_CODE AS ID, c.course_name,c.COURSE_NAME ,
+COUNT(s.SESSION_COURSE_REF),
+s.session_prof_ref as teacher
+FROM COURSES c
+JOIN PROGRAMS p
+ON c.COURSE_CODE = p.PROGRAM_COURSE_CODE_REF JOIN SESSIONS s
+ON s.SESSION_COURSE_REF = c.COURSE_CODE
+WHERE p.PROGRAM_ASSIGNMENT LIKE '" . $code . "'
+AND s.SESSION_POPULATION_YEAR =" . $year . "
+AND s.SESSION_POPULATION_PERIOD LIKE '" . $intake . "'GROUP BY ID";
