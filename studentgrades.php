@@ -61,6 +61,95 @@ if (isset($_GET['email'])) {
         </form>
     </nav>
     <div class="container">
+        <div class="leftside">
+            <div class="profile-pic">
+                <img width="200px" src="assets\avatar_student.webp" alt="">
+            </div>
+            <div class="student-courses">
+                <span>Course List</span>
+                <ul>
+                    <?php
+                    require 'php/get_student_data.php';
+                    while ($course_row = $course_result->fetch_assoc()) {
+                        echo "<li>" . $course_row['course_name'] . "</li>";
+                    }
+                    ?>
+                </ul>
+            </div>
+        </div>
+        <div class="rightside">
+            <div class="name">
+
+                <?php
+                // Split the email address by dot ('.')
+                // Use regular expression to match the first and last name
+                if (preg_match('/^([^\.]+)\.([^@]+)@/', $email, $matches)) {
+                    $firstName = $matches[1];
+                    $lastName = $matches[2];
+
+                    echo "<h2>" . $firstName . " " . $lastName . "</h2>";
+
+                }
+                ?>
+                <p>AIs 2020 FALL</p>
+            </div>
+            <div class="above-content-wrapper">
+                <div class="above-content-leftside-wrapper">
+                    <div class="average-grade">
+                        <span>Average Grade</span>
+                        <p>18.5</p>
+                    </div>
+                    <div class="send-message">
+                        <button class="bt" id="bt">
+                            <span class="msg" id="msg"></span>
+                            SEND EMAIL
+                        </button>
+                    </div>
+                </div>
+                <div class="chart">
+                    <canvas id="courseChart"></canvas>
+                </div>
+            </div>
+            <div class="about-text">
+                <i class="fa-solid fa-user"></i>
+                <span>About</span>
+            </div>
+            <div class="about">
+                <div class="contact-information">
+                    <p>Contact Information</p>
+                    <ul>
+                        <li>Phone</li>
+                        <li>Address</li>
+                        <li>E-mail</li>
+                        <li>name</li>
+                    </ul>
+                </div>
+                <div class="basic-information">
+                    <p>Basic Information</p>
+                    <ul>
+                        <li>Birthday</li>
+                        <li>Gender</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    </div>
+    <div class="all-grades">
         <h3>Grades For</h3>
         <?php
         // Split the email address by dot ('.')
@@ -72,8 +161,6 @@ if (isset($_GET['email'])) {
             echo "<h1>" . $firstName . " " . $lastName . "</h1>";
 
         }
-
-
         ?>
         <table>
             <thead>
@@ -90,9 +177,9 @@ if (isset($_GET['email'])) {
                 require_once "php/connect.php";
                 $conn = conn();
                 $sql = "SELECT c.course_name, `grade_exam_type_ref`,e.exam_weight,e.exam_type, `grade_score` FROM `grades` g
-                    JOIN exams e ON e.exam_course_code = g.grade_course_code_ref AND e.exam_type = g.grade_exam_type_ref
-                    JOIN courses c ON c.course_code = g.grade_course_code_ref
-                    WHERE grade_student_epita_email_ref = '" . $email . "';";
+                JOIN exams e ON e.exam_course_code = g.grade_course_code_ref AND e.exam_type = g.grade_exam_type_ref
+                JOIN courses c ON c.course_code = g.grade_course_code_ref
+                WHERE grade_student_epita_email_ref = '" . $email . "';";
                 $result = $conn->query($sql);
                 while ($row = $result->fetch_assoc()) {
                     echo "<tr>";
@@ -111,6 +198,50 @@ if (isset($_GET['email'])) {
     <script src="JS/navbar.js"></script>
     <script src="JS/editGrades.js"></script>
     <script src="JS/removeGrades.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script>
+        const ctx = document.getElementById('courseChart');
+
+        // Get the population data from PHP and format it as an array
+        const data = [
+            3, 10, 17
+        ];
+
+        // Create the doughnut chart
+        new Chart(ctx, {
+            type: 'polarArea',
+            data: {
+                labels: [
+                    'Database',
+                    'Python',
+                    'Algo'
+                ],
+                datasets: [{
+                    label: 'Course Grade',
+                    data: data,
+                    backgroundColor: [
+                        'rgb(255, 99, 132, 1)',
+                        'rgba(54, 162, 235, 1)',
+                        'rgba(255, 206, 86, 1)',
+                        'rgba(75, 192, 192, 1)',
+                        'rgba(153, 102, 255, 1)',
+                    ],
+                    borderColor: [
+                        'rgba(255, 99, 132, 1)',
+                        'rgba(54, 162, 235, 1)',
+                        'rgba(255, 206, 86, 1)',
+                        'rgba(75, 192, 192, 1)',
+                        'rgba(153, 102, 255, 1)',
+                    ],
+                    borderWidth: 1,
+                }],
+            },
+            options: {
+                responsive: false,
+
+            },
+        });
+    </script>
 </body>
 
 </html>

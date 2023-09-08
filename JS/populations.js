@@ -203,8 +203,9 @@ document.addEventListener("DOMContentLoaded", function () {
     formData.append("code", code);
     formData.append("year", year);
     formData.append("intake", intake);
-    xhr.open("POST", url, true);
 
+    console.log(formData);
+    xhr.open("POST", url, true);
     xhr.onreadystatechange = function () {
       if (xhr.readyState === 4) {
         if (xhr.status === 200) {
@@ -213,9 +214,16 @@ document.addEventListener("DOMContentLoaded", function () {
           window.location.reload();
           console.log("Im working ");
           // You can update the page content or show a success message here
+        } else if (
+          xhr.responseText.includes("Duplicate") &&
+          xhr.responseText.includes("contacts")
+        ) {
+          console.log("it is a duplicate");
+          alert("Student already exists with this email");
         } else {
           // Handle error response
-          console.error(xhr.statusText);
+          console.error(xhr.responseText);
+
           // You can show an error message here
         }
       }
@@ -240,7 +248,6 @@ window.addEventListener("click", (event) => {
     addCoursePopup.classList.remove("show");
   }
 });
-console.log(addStudentPopup.classList.contains("show"));
 
 // search
 document.addEventListener("DOMContentLoaded", function () {

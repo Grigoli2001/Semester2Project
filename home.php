@@ -129,7 +129,7 @@ if (empty($_SESSION['user_id'])) {
 
         // Create the doughnut chart
         new Chart(ctx, {
-            type: 'polarArea',
+            type: 'doughnut',
             data: {
                 labels: [
                     <?php

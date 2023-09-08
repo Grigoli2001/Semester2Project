@@ -28,7 +28,6 @@ document.addEventListener("DOMContentLoaded", function () {
       if (xhr.readyState === 4) {
         if (xhr.status === 200) {
           // Handle success response
-          console.log(xhr.responseText);
           window.location.reload();
           console.log("Im working ");
           // You can update the page content or show a success message here

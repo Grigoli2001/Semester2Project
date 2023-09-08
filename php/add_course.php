@@ -20,7 +20,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $code = $_POST['code'];
     $year = $_POST['year'];
     $intake = $_POST['intake'];
-    $coursename = $_POST['coursename'];
+    $coursename = trim($_POST['coursename']);
     $sessioncount = $_POST['sessioncount'];
     $teacher = $_POST['teacher'];
 

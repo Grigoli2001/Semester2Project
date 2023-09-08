@@ -21,7 +21,6 @@ session_start();
                 <img src="assets/EPITA School of Engineering and Computer Science_Logo.png" alt="" />
             </a>
             <div class="nav_btn">
-                <button onclick="window.location.href = 'student_login.php'">Student portal</button>
                 <button onclick="window.location.href = 'login.php'">Admin Portal</button>
             </div>
         </nav>

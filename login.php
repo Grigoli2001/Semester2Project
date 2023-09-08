@@ -22,7 +22,6 @@ session_start();
       </a>
       <div class="nav_btn">
         <button onclick="window.location.href = 'student_login.php'">Student portal</button>
-        <button onclick="window.location.href = 'login.php'">Admin Portal</button>
       </div>
     </nav>
     <div class="login_box">

@@ -24,9 +24,9 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $code = $_POST['code'];
     $year = $_POST['year'];
     $intake = $_POST['intake'];
-    $firstname = $_POST["firstname"];
-    $lastname = $_POST["lastname"];
-    $email = $_POST["student_email"];
+    $firstname = trim($_POST["firstname"]);
+    $lastname = trim($_POST["lastname"]);
+    $email = trim($_POST["student_email"]);
     $birth_day = $_POST["birth_day"];
     $birth_month = $_POST["birth_month"];
     $birth_year = $_POST["birth_year"];
@@ -36,11 +36,24 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $enrollment_status = $_POST["enrollment_status"];
     $epita_email = "" . $firstname . "." . $lastname . "@epita.fr";
     $_SESSION['epita_email'] = $epita_email;
+    $_SESSION['email'] = $email;
     // Create a timestamp using mktime()
     $timestamp = mktime(0, 0, 0, $birth_month, $birth_day, $birth_year);
     // Format the timestamp as a MySQL-compatible date string
     $mysql_date_string = date('Y-m-d', $timestamp);
 
+    // check if student already exists with the same name and lastname
+
+    $sql_check_students = "SELECT student_epita_email FROM students where student_epita_email = ?";
+    $stmt1 = $conn->prepare($sql_check_students);
+    $stmt1->bind_param("s", $epita_email);
+    $stmt1->execute();
+    $result = $stmt1->get_result();
+    $rowcount = $result->num_rows;
+    if ($rowcount > 0) {
+        $epita_email = "" . $firstname . "." . $lastname . "" . $rowcount . "@epita.fr";
+        $_SESSION['epita_email'] = $epita_email;
+    }
 
 
     // Inserting in the students table
@@ -62,6 +75,8 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     } else {
         // At least one of the database updates failed
         echo "Error: " . $stmt_students->error . " or " . $stmt_contacts->error;
+        http_response_code(400);
+        exit;
     }
     // Close the statement and connection
     $stmt_students->close();
