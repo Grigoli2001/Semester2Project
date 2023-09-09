@@ -48,11 +48,7 @@ session_start();
             </label>
           </div>
         </div>
-        <div class="below_input">
-          <input type="checkbox" name="rememberMe" id="rememberMe" />
-          <span>Remember Me</span>
-          <a href="resetpass.php"> Forgot my password</a>
-        </div>
+
         <div id="error_message"></div>
         <button name="login_form" type="submit">Log In</button>
       </form>

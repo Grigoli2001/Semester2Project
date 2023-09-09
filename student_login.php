@@ -48,69 +48,66 @@ session_start();
                         </label>
                     </div>
                 </div>
-                <div class="below_input">
-                    <input type="checkbox" name="rememberMe" id="rememberMe" />
-                    <span>Remember Me</span>
-                    <a href="resetpass.php"> Forgot my password</a>
-                </div>
+
                 <div id="error_message"></div>
                 <button name="login_form" type="submit">Log In</button>
             </form>
-            <script>
-                function togglePassword() {
-                    var passwrdInput = document.getElementById("passwrd");
-                    var eyeIcon = document.getElementById("eyeIcon");
+        </div>
+        <script>
+            function togglePassword() {
+                var passwrdInput = document.getElementById("passwrd");
+                var eyeIcon = document.getElementById("eyeIcon");
 
-                    if (passwrdInput.type === "password") {
-                        passwrdInput.type = "text";
-                        eyeIcon.classList.remove("fa-eye");
-                        eyeIcon.classList.add("fa-eye-slash");
-                    } else {
-                        passwrdInput.type = "password";
-                        eyeIcon.classList.remove("fa-eye-slash");
-                        eyeIcon.classList.add("fa-eye");
-                    }
+                if (passwrdInput.type === "password") {
+                    passwrdInput.type = "text";
+                    eyeIcon.classList.remove("fa-eye");
+                    eyeIcon.classList.add("fa-eye-slash");
+                } else {
+                    passwrdInput.type = "password";
+                    eyeIcon.classList.remove("fa-eye-slash");
+                    eyeIcon.classList.add("fa-eye");
                 }
-            </script>
-            <?php
+            }
+        </script>
+        <?php
 
-            if (isset($_POST['login_form'])) {
+        if (isset($_POST['login_form'])) {
 
-                require_once "php/connect.php";
-                $conn = conn();
-                // $sql = "SELECT * FROM admins WHERE (admin_email ='" . $_POST["email"] . "' OR admin_username = '" . $_POST['email'] . "') and admin_password = '" . $_POST['passwrd'] . "'";
-                $check_email = "SELECT * FROM student_login WHERE student_epita_email_ref ='" . $_POST["email"] . "'";
-                $result = $conn->query($check_email);
+            require_once "php/connect.php";
+            $conn = conn();
+            // $sql = "SELECT * FROM admins WHERE (admin_email ='" . $_POST["email"] . "' OR admin_username = '" . $_POST['email'] . "') and admin_password = '" . $_POST['passwrd'] . "'";
+            $check_email = "SELECT * FROM student_login WHERE student_epita_email_ref ='" . $_POST["email"] . "'";
+            $result = $conn->query($check_email);
 
-                if ($result->num_rows > 0) {
-                    $row = $result->fetch_assoc();
-                    if ($row['student_password'] == $_POST['passwrd']) {
-                        $_SESSION['user_id'] = $row['student_epita_email_ref']; //create session for each username
-                        $_SESSION['user_name'] = $row['student_epita_email_ref']; //create session for each username
-                        setcookie('userID', $_SESSION['user_id'], 0, '/');
-                        header("Location: student_dashboard.php");
-                        exit;
-                    } else {
-                        echo '<script> 
+            if ($result->num_rows > 0) {
+                $row = $result->fetch_assoc();
+                if ($row['student_password'] == $_POST['passwrd']) {
+                    $_SESSION['user_id'] = $row['student_epita_email_ref']; //create session for each username
+                    $_SESSION['user_email'] = $row['student_epita_email_ref'];
+                    setcookie('userID', $_SESSION['user_id'], 0, '/');
+                    header("Location: student_dashboard.php?email=" . $_SESSION['user_email']);
+                    exit;
+                } else {
+                    echo '<script> 
             document.getElementById("passwrd").classList.add("error-input");
             var errorMessageContainer = document.getElementById("error_message");
             errorMessageContainer.innerText = "Invalid password. Please try again.";
             errorMessageContainer.style.display = "block";
             </script>';
-                    }
-                } else {
-                    echo '<script>
+                }
+            } else {
+                echo '<script>
           document.querySelector("input[name=email]").classList.add("error-input");
           var errorMessageContainer = document.getElementById("error_message");
           errorMessageContainer.innerText = "Invalid Email or Username. Please try again.";
           errorMessageContainer.style.display = "block";
           </script>';
-                }
-                $conn->close();
             }
-            ?>
+            $conn->close();
+        }
+        ?>
 
-            <script src="JS/login.js"></script>
+        <script src="JS/login.js"></script>
 </body>
 
 </html>

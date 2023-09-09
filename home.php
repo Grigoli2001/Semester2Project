@@ -18,6 +18,7 @@ if (empty($_SESSION['user_id'])) {
     <title>Document</title>
     <link rel="stylesheet" href="style/home.css?v=<?php echo time(); ?>">
     <link rel="stylesheet" href="style/nav.css?v=<?php echo time(); ?>">
+    <link rel="stylesheet" href="style/footer.css?v=<?php echo time(); ?>">
 
 </head>
 
@@ -53,7 +54,7 @@ if (empty($_SESSION['user_id'])) {
             ?>
         </p>
     </div>
-    <div class="container">
+    <div class="container-home">
         <div class="program-list">
             <div class="list">
 
@@ -98,16 +99,21 @@ if (empty($_SESSION['user_id'])) {
                 ?>
             </div>
             <div class="chart">
-                <canvas id="attChart" width="440" height="400"></canvas>
+                <canvas id="attChart" width="400" height="400"></canvas>
             </div>
         </div>
     </div>
+
+    <footer id="footer">
+        <p>The Website is Created By Grigoli Patsatsia</p>
+    </footer>
 
 
 
 
     <?php $conn->close() ?>
     <script src="JS\navbar.js"></script>
+    <script src="JS/websiteGenerationTime.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script>
         const ctx = document.getElementById('courseChart');

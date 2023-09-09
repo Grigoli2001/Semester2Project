@@ -32,6 +32,7 @@ if (isset($_GET['email'])) {
     <title>Document</title>
     <link rel="stylesheet" href="style/nav.css">
     <link rel="stylesheet" href="style/studentgrade.css">
+    <link rel="stylesheet" href="style/footer.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 
 </head>
@@ -61,6 +62,18 @@ if (isset($_GET['email'])) {
         </form>
     </nav>
     <div class="container">
+        <div class="send-email" id="sendEmailPopup">
+            <img id="add_course_popup_close_img" src="assets/closebut.png" alt="">
+
+            <h4>Send Email</h4>
+            <form action="" id="sendEmailForm">
+                <label for="subject">Subject</label>
+                <input placeholder="Your subject" name="subject" type="text">
+                <label for="message">Message</label>
+                <textarea placeholder="Your message" name="message" id="" cols="30" rows="10"></textarea>
+                <button type="submit">Send</button>
+            </form>
+        </div>
         <div class="leftside">
             <div class="profile-pic">
                 <img width="200px" src="assets\avatar_student.webp" alt="">
@@ -128,49 +141,35 @@ if (isset($_GET['email'])) {
             </div>
             <div class="about">
                 <div class="contact-information">
-                    <p>Contact Information</p>
+                    <h4>Contact Information</h4>
                     <ul>
                         <li>
-                            <?php echo $student_row["contact_address"] ?>
+                            <?php echo "Address: " . $student_row["contact_address"] ?>
                         </li>
                         <li>
-                            <?php echo $student_row["contact_email"] ?>
+                            <?php echo "Email: " . $student_row["contact_email"] ?>
                         </li>
                         <li>
-                            <?php echo $student_row["contact_city"] ?>
+                            <?php echo "City: " . $student_row["contact_city"] ?>
                         </li>
                         <li>
-                            <?php echo $student_row["contact_country"] ?>
+                            <?php echo "Country: " . $student_row["contact_country"] ?>
                         </li>
                     </ul>
                 </div>
                 <div class="basic-information">
-                    <p>Basic Information</p>
+                    <h4>Basic Information</h4>
                     <ul>
                         <li>
-                            <?php echo $student_row["contact_birthdate"] ?>
+                            <?php echo "Birthday: " . $student_row["contact_birthdate"] ?>
                         </li>
                         <li>
-                            <?php echo $student_row["student_enrollment_status"] ?>
+                            <?php echo "Enrollment: " . $student_row["student_enrollment_status"] ?>
                         </li>
                     </ul>
                 </div>
             </div>
         </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
     </div>
     <div class="all-grades">
@@ -206,11 +205,17 @@ if (isset($_GET['email'])) {
             </tbody>
         </table>
     </div>
+    <footer id="footer">
+        <p>The Website is Created By Grigoli Patsatsia</p>
+    </footer>
 
     <?php $conn->close(); ?>
     <script src="JS/navbar.js"></script>
     <script src="JS/editGrades.js"></script>
     <script src="JS/removeGrades.js"></script>
+    <script src="JS/studentGrades.js"></script>
+    <script src="JS/websiteGenerationTime.js"></script>
+
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script>
         const ctx = document.getElementById('courseChart');

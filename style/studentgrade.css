@@ -3,7 +3,7 @@ body {
 }
 table {
   border-collapse: collapse;
-  width: 100%;
+  width: 50%;
 }
 
 th,
@@ -206,4 +206,73 @@ td:first-child {
 .about-text > span {
   margin-left: 10px;
   font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+}
+
+.contact-information > ul > li,
+.basic-information > ul > li {
+  list-style-type: none;
+}
+ul {
+  padding: 0;
+}
+.all-grades {
+  text-align: -webkit-center;
+  margin-top: 118px;
+}
+.all-grades > h3 {
+  margin-bottom: 30px;
+}
+
+/* Send email Popup */
+
+.send-email {
+  display: none;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  padding: 20px;
+  background-color: #fff;
+
+  border-radius: 10px;
+  box-shadow: 0 5px 15px rgba(0, 0, 255, 0.7);
+  z-index: 1000;
+}
+.send-email > form {
+  display: flex;
+  flex-direction: column;
+}
+.send-email > form > input {
+  height: 20px;
+  border: 1px solid #ccc;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+textarea {
+  border: 1px solid #ccc;
+  padding: 10px;
+  border-radius: 5px;
+  font-size: x-large;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  resize: none;
+}
+.send-email > form > button {
+  height: 25px;
+  background-color: #0400ff;
+  border: none;
+  color: white;
+  cursor: pointer;
+}
+.send-email > form > button:hover {
+  background-color: rgba(0, 140, 255, 0.986);
+}
+.send-email.show {
+  display: flex;
+  flex-direction: column;
+}
+#add_course_popup_close_img {
+  height: 20px;
+  width: 20px;
+  cursor: pointer;
 }

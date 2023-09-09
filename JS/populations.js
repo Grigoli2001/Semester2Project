@@ -28,10 +28,12 @@ function editNameAndLastName(row) {
   const nameInput = document.createElement("input");
   nameInput.type = "text";
   nameInput.value = currentName;
+  nameInput.classList.add("edit-name-lastname-input");
 
   const lastNameInput = document.createElement("input");
   lastNameInput.type = "text";
   lastNameInput.value = currentLastName;
+  lastNameInput.classList.add("edit-name-lastname-input");
 
   // Create the submit button
   const submitButton = document.createElement("button");

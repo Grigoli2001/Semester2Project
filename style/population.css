@@ -297,7 +297,12 @@ body {
   cursor: text;
   transition: 0.3s ease;
 }
-
+td > a:hover {
+  color: #3636f8;
+}
+td > a:visited {
+  color: #0000ee;
+}
 .form label .input:placeholder-shown + span {
   top: 15px;
   font-size: 0.9em;
@@ -575,4 +580,9 @@ td button {
   border: none;
   background: none;
   padding: 0;
+}
+
+.edit-name-lastname-input {
+  height: 35px;
+  border: none;
 }
