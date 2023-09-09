@@ -7,8 +7,11 @@ body {
   flex-direction: column;
 }
 .content {
-  display: flex;
-  flex-direction: row;
+  /* display: flex;
+  flex-direction: row; */
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(900px, 1fr));
+  grid-gap: 20px;
   position: relative;
 }
 .students {
@@ -17,6 +20,7 @@ body {
 .add_search_student_container {
   display: flex;
   flex-direction: row;
+  margin-bottom: 20px;
 }
 .add_student {
   display: flex;
@@ -50,6 +54,7 @@ body {
 .add_search_courses_container {
   display: flex;
   flex-direction: row;
+  margin-bottom: 20px;
 }
 .add_course {
   display: flex;
