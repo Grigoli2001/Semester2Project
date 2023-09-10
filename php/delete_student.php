@@ -60,6 +60,14 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     } else {
         echo 'Error : ' . $stmt3->error;
     }
+    $sql_delete_grades = "DELETE FROM grades WHERE grade_student_epita_email_ref = ?";
+    $stmt4 = $conn->prepare($sql_delete_grades);
+    $stmt4->bind_param('s', $email);
+    if ($stmt4->execute()) {
+        echo 'grade Deleted';
+    } else {
+        echo 'Error : ' . $stmt4->error;
+    }
 
 
     // Close the statement and connection
@@ -68,6 +76,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $stmt1->close();
     $stmt2->close();
     $stmt3->close();
+    $stmt4->close();
     $conn->close();
 }
 ?>

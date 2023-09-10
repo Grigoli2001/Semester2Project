@@ -114,8 +114,11 @@ body {
 .login_input_pass_wrapper,
 .login_input_email_wrapper {
   width: 100%;
-  height: 20%;
+
   margin-bottom: 10px;
+}
+#error_message {
+  margin-top: 15px;
 }
 .login_input_email,
 .login_input_pass {
