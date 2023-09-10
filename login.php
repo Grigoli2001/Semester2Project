@@ -74,7 +74,6 @@ session_start();
 
         require_once "php/connect.php";
         $conn = conn();
-        // $sql = "SELECT * FROM admins WHERE (admin_email ='" . $_POST["email"] . "' OR admin_username = '" . $_POST['email'] . "') and admin_password = '" . $_POST['passwrd'] . "'";
         $check_email = "SELECT * FROM admins WHERE admin_email ='" . $_POST["email"] . "' OR admin_username = '" . $_POST['email'] . "'";
         $result = $conn->query($check_email);
 

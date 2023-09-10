@@ -283,7 +283,9 @@ if (isset($_GET['code']) && isset($_GET['year']) && isset($_GET['intake'])) {
                             echo "<td>" . $row['CONTACT_FIRST_NAME'] . "</td>";
                             echo "<td>" . $row['CONTACT_LAST_NAME'] . "</td>";
                             echo "<td>" . $row['grade'] . "</td>";
-                            echo "<td><button class='edit-button' onclick=\"editNameAndLastName(this.parentNode.parentNode)\"><i class='fas fa-pen'></i></button><button class='trash-button' onclick=\"removeStudent(this.parentNode.parentNode)\" id='remove_student_" . $i . "'> <i class='fas fa-trash'></i></button></td>";
+                            echo "<td><button class='edit-button' onclick=\"editNameAndLastName(this.parentNode.parentNode)\"><i class='fas fa-pen'>
+                            </i></button><button class='trash-button' onclick=\"removeStudent(this.parentNode.parentNode)\" id='remove_student_" . $i . "'> 
+                            <i class='fas fa-trash'></i></button></td>";
                             echo "</tr>";
                             $i += 1;
                         }

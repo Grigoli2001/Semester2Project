@@ -40,7 +40,7 @@ if (isset($_SESSION['user_email'])) {
     <nav id="navbar">
         <div class="back-btn">
 
-            <button onclick="window.history.back()">BACK</button>
+            <button onclick="location.reload()">HOME</button>
         </div>
         <div class="nav_logo">
             <a href="home.php">
