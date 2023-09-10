@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: Sep 08, 2023 at 03:49 PM
+-- Generation Time: Sep 10, 2023 at 02:04 PM
 -- Server version: 8.0.31
 -- PHP Version: 8.0.26
 
@@ -36,14 +36,16 @@ CREATE TABLE IF NOT EXISTS `admins` (
   `admin_firstname` varchar(30) DEFAULT NULL,
   `admin_lastname` varchar(30) DEFAULT NULL,
   PRIMARY KEY (`admin_id`)
-) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- Dumping data for table `admins`
 --
 
 INSERT INTO `admins` (`admin_id`, `admin_email`, `admin_username`, `admin_password`, `admin_firstname`, `admin_lastname`) VALUES
-(1, 'gega@gmail.com', 'gega', 'gega2001', 'Gega', 'Patsatsia');
+(1, 'gega@gmail.com', 'gega', 'gega2001', 'Gega', 'Patsatsia'),
+(2, 'adminportal@epita.fr', 'admin', 'admin', 'Admin', NULL),
+(3, 'Stephanie@epita.fr', 'Stephanie', 'admin', 'Setphanie', 'Chatelet');
 
 -- --------------------------------------------------------
 
@@ -1588,7 +1590,6 @@ INSERT INTO `contacts` (`contact_email`, `contact_first_name`, `contact_last_nam
 ('malinda.hochard@yahoo.com', 'Malinda', 'Hochard', '55 Riverside Ave', 'Indianapolis', 'USA', '1988-07-10'),
 ('natalie.fern@hotmail.com', 'Natalie', 'Fern', '7140 University Ave', 'Rock Springs', 'USA', '1987-11-09'),
 ('lisha@centini.org', 'Lisha', 'Centini', '64 5th Ave #1153', 'Mc Lean', 'USA', '1980-03-02'),
-('aaaa@gmail.com', 'Aaaaaaaaaaaaaas', 'AaSSSAA', 'qweeqwqwe', 'qweqwe', 'France', '2000-08-01'),
 ('guifgsdauig@dasads', 'dkuasg', 'uiasfgdiu', 'asdfasdf', 'asdf', '', '1999-02-03'),
 ('aaaa@aaa.aa', 'aaaaaass', 'asaaa', 'qqweeqw', 'aseasdas', 'Georgia', '2005-02-02'),
 ('test@test.com', 'test', 'test', 'weqqwe', 'eqw', 'India', '2004-02-20'),
@@ -1602,14 +1603,13 @@ INSERT INTO `contacts` (`contact_email`, `contact_first_name`, `contact_last_nam
 ('aaaaaaaa@aaa', 'aaaaaaa', 'aaaaaaa', 'aaaaaa', 'aaaaaaa', 'USA', '2004-01-03'),
 ('asdasd@weqqwe', 'adsasdsd', 'sdaasdasdasdasd', 'asdadsdas', 'asdasdsda', 'Georgia', '2004-02-02'),
 ('asdasdasd@asdasd', 'dasasd', 'asdasd', 'daswasd', 'dasasd', 'USA', '2003-02-02'),
-('raunak.bhansali17@gmail.com', 'raunak', 'Bhansali', 'dsassda', 'asdasd', 'India', '2001-04-05'),
 ('AAAAAAAAAAAAAAAAAAAA@AAAAAAAAAA', 'AAAAAAAAAAAAAAAAAAA', 'AAAAAAAAAAAAA', 'AAAAAAAAAAA', 'AAAAAAAAAAAAAAAA', 'Georgia', '2003-03-20'),
 ('sdaasdasd@asdasd', 'asdasd', 'asdasd', 'adsas', 'asdasd', 'Georgia', '2004-03-03'),
 ('asdasd@asdasd', 'asdasd', 'asdasd', 'asdasd', 'asdasd', 'France', '2002-04-05'),
 ('asdasd@csccsacs', 'asdasd', 'asdasd', 'asdasd', 'asdasd', 'France', '2002-04-05'),
 ('asdasdasd@fggeher', 'sdaasds', 'sdaasdasd', 'dsdas', 'sdaasd', 'USA', '2001-05-03'),
 ('eleneami@gmail.com', 'Elene', 'Amiredjibi', 'dasasd', 'asdasd', 'France', '2000-05-04'),
-('Gegapacacia@gmail.com', 'Grigoli', 'Patsatsia', '106 Rue vieille du temple', 'Paris', 'France', '2001-05-04');
+('gegapacacia@gmail.com', 'Grigoli', 'Patsatsia', '106 Rue vieille du temple', 'Paris', 'France', '2001-01-22');
 
 -- --------------------------------------------------------
 
@@ -1644,7 +1644,7 @@ INSERT INTO `courses` (`course_code`, `course_rev`, `duration`, `course_last_rev
 ('CS_DATA_PRIV', 1, 11, 2020, 'data privacy by design', 'how to handle data privacy from application conception to application execution'),
 ('SE_ADV_JS', 3, 24, 2021, 'advanced js', 'advanced js techniques'),
 ('AI_DATA_PREP', 1, 10, 2021, 'data exploration and preparation', 'Explore and prepare datasets for artificial intelligence'),
-('AIs_Test', 1, 18, 2023, 'Test', 'Testing');
+('AIS_algo', 1, 24, 2023, 'Advanced Algorithms', 'teaching advanced algorithms');
 
 -- --------------------------------------------------------
 
@@ -1685,7 +1685,11 @@ INSERT INTO `exams` (`exam_course_code`, `exam_course_rev`, `exam_weight`, `exam
 ('SE_ADV_DB', 2, 2, 'Quiz'),
 ('PG_PYTHON', 2, 3, 'Quiz'),
 ('PG_PYTHON', 2, 4, 'Lab'),
-('SE_ADV_JS', 3, 1, 'Quiz');
+('SE_ADV_JS', 3, 1, 'Quiz'),
+('AIs_Test', 1, 2, 'Project'),
+('FT_Foot', 1, 4, 'Project'),
+('MK_COM_FOR_LEADER', 1, 2, 'Lab'),
+('AIS_algo', 1, 2, 'Lab');
 
 -- --------------------------------------------------------
 
@@ -1782,7 +1786,7 @@ INSERT INTO `grades` (`grade_student_epita_email_ref`, `grade_course_code_ref`, 
 ('solange.shinko@epita.fr', 'PG_PYTHON', 2, 'Project', 15),
 ('rozella.ostrosky@epita.fr', 'PG_PYTHON', 2, 'Project', 14),
 ('kati.rulapaugh@epita.fr', 'PG_PYTHON', 2, 'Project', 11),
-('malinda.hochard@epita.fr', 'PG_PYTHON', 2, 'Project', 17),
+('malinda.hochard@epita.fr', 'PG_PYTHON', 2, 'Project', 18),
 ('ammie.corrio@epita.fr', 'PG_PYTHON', 2, 'Project', 12),
 ('natalie.fern@epita.fr', 'PG_PYTHON', 2, 'Project', 4),
 ('kiley.caldarera@epita.fr', 'PG_PYTHON', 2, 'Project', 9),
@@ -1971,16 +1975,18 @@ INSERT INTO `grades` (`grade_student_epita_email_ref`, `grade_course_code_ref`, 
 ('natalie.fern@epita.fr', 'AI_DATA_PREP', 1, 'Practical', 18),
 ('blondell.pugh@epita.fr', 'AI_DATA_PREP', 1, 'Practical', 15),
 ('erick.ferencz@epita.fr', 'AI_DATA_PREP', 1, 'Practical', 13),
-('Aaaaaaaaaaaaaas.AaSSSAA@epita.fr', 'DT_RDBMS', 3, 'Project', 20),
+('erick.ferencz@epita.fr', 'AIS_algo', 1, 'Lab', 20),
 ('malinda.hochard@epita.fr', 'SE_ADV_DB', 2, 'Project', 12),
 ('gega.gega@epita.fr', 'PG_PYTHON', 2, 'Project', 20),
 ('bette.nicka@epita.fr', 'SE_ADV_DB', 2, 'Quiz', 15),
-('Grigoli.Patsatsia@epita.fr', 'PG_PYTHON', 2, 'Quiz', 18),
-('Grigoli.Patsatsia@epita.fr', 'PG_PYTHON', 2, 'Lab', 20),
+('Grigoli.Patsatsia@epita.fr', 'DT_RDBMS', 3, 'Lab', 20),
+('Grigoli.Patsatsia@epita.fr', 'MK_COM_FOR_LEADER', 1, 'Lab', 15),
 ('blondell.pugh@epita.fr', 'PG_PYTHON', 2, 'Lab', 16),
-('Grigoli.Patsatsia@epita.fr', 'SE_ADV_DB', 2, 'Quiz', 20),
+('Grigoli.Patsatsia@epita.fr', 'MK_COM_FOR_LEADER', 1, 'Quiz', 10),
 ('raunak.Bhansali@epita.fr', 'PG_PYTHON', 2, 'Lab', 20),
-('Elene.Amiredjibi@epita.fr', 'PG_PYTHON', 2, 'Project', 19);
+('Elene.Amiredjibi@epita.fr', 'PG_PYTHON', 2, 'Project', 19),
+('Elene.Amiredjibi@epita.fr', 'SE_ADV_DB', 2, 'Quiz', 20),
+('gega.patsatsia@epita.fr', 'PG_PYTHON', 2, 'Lab', 19);
 
 -- --------------------------------------------------------
 
@@ -2035,14 +2041,19 @@ INSERT INTO `programs` (`program_course_code_ref`, `program_course_rev_ref`, `pr
 ('AI_DATA_PREP', 1, 'CS'),
 ('AI_DATA_SCIENCE_IN_PROD', 1, 'AIs'),
 ('AI_DATA_SCIENCE_IN_PROD', 1, 'DSA'),
+('AIS_algo', 1, 'AIs'),
 ('AIs_Test', 1, 'AIs'),
+('ALGO', 1, 'AIs'),
 ('CS_DATA_PRIV', 1, 'CS'),
+('CS_SOFTWARE_SECURITY', 1, 'AIs'),
 ('CS_SOFTWARE_SECURITY', 1, 'CS'),
 ('DT_RDBMS', 3, 'AIs'),
 ('DT_RDBMS', 3, 'CS'),
 ('DT_RDBMS', 3, 'DSA'),
 ('DT_RDBMS', 3, 'ISM'),
 ('DT_RDBMS', 3, 'SE'),
+('FT_Foot', 1, 'AIs'),
+('MK_COM_FOR_LEADER', 1, 'AIs'),
 ('MK_COM_FOR_LEADER', 1, 'ISM'),
 ('PG_PYTHON', 2, 'AIs'),
 ('PG_PYTHON', 2, 'CS'),
@@ -2101,11 +2112,9 @@ INSERT INTO `sessions` (`session_course_ref`, `session_course_rev_ref`, `session
 ('SE_ADV_DB', 2, 'maurine.yglesias@epita.fr', '2020-10-10', '20:00:00', '00:00:00', 'ON-CAMPUS', 2020, 'FALL', '606'),
 ('SE_ADV_DB', 2, 'maurine.yglesias@epita.fr', '2020-10-11', '21:00:00', '01:00:00', 'ON-CAMPUS', 2020, 'FALL', '606'),
 ('SE_ADV_DB', 2, 'maurine.yglesias@epita.fr', '2020-10-12', '22:00:00', '02:00:00', 'ON-CAMPUS', 2020, 'FALL', '606'),
-('SE_ADV_DB', 2, 'maurine.yglesias@epita.fr', '2020-10-13', '23:00:00', '03:00:00', 'REMOTE', 2020, 'FALL', NULL),
 ('SE_ADV_DB', 2, 'maurine.yglesias@epita.fr', '2020-10-14', '00:00:00', '04:00:00', 'ON-CAMPUS', 2020, 'FALL', '608'),
 ('SE_ADV_DB', 2, 'maurine.yglesias@epita.fr', '2020-10-15', '01:00:00', '05:00:00', 'ON-CAMPUS', 2020, 'FALL', '606'),
 ('SE_ADV_DB', 2, 'maurine.yglesias@epita.fr', '2020-10-16', '02:00:00', '06:00:00', 'ON-CAMPUS', 2020, 'FALL', '606'),
-('SE_ADV_DB', 2, 'maurine.yglesias@epita.fr', '2020-10-17', '03:00:00', '07:00:00', 'REMOTE', 2020, 'FALL', NULL),
 ('SE_ADV_JS', 3, 'brock.bolognia@epita.fr', '2020-10-18', '04:00:00', '08:00:00', 'ON-CAMPUS', 2020, 'FALL', '604'),
 ('SE_ADV_JS', 3, 'brock.bolognia@epita.fr', '2020-10-19', '05:00:00', '09:00:00', 'ON-CAMPUS', 2020, 'FALL', '606'),
 ('SE_ADV_JS', 3, 'brock.bolognia@epita.fr', '2020-10-20', '06:00:00', '10:00:00', 'ON-CAMPUS', 2020, 'FALL', '608'),
@@ -2119,20 +2128,16 @@ INSERT INTO `sessions` (`session_course_ref`, `session_course_rev_ref`, `session
 ('DT_RDBMS', 3, 'maurine.yglesias@epita.fr', '2020-10-28', '14:00:00', '18:00:00', 'ON-CAMPUS', 2020, 'FALL', '605'),
 ('DT_RDBMS', 3, 'maurine.yglesias@epita.fr', '2020-10-29', '15:00:00', '19:00:00', 'ON-CAMPUS', 2020, 'FALL', '606'),
 ('DT_RDBMS', 3, 'maurine.yglesias@epita.fr', '2020-10-30', '16:00:00', '20:00:00', 'ON-CAMPUS', 2020, 'FALL', '606'),
-('DT_RDBMS', 3, 'maurine.yglesias@epita.fr', '2020-10-31', '17:00:00', '21:00:00', 'REMOTE', 2020, 'FALL', NULL),
 ('DT_RDBMS', 3, 'maurine.yglesias@epita.fr', '2020-11-01', '18:00:00', '22:00:00', 'ON-CAMPUS', 2020, 'FALL', '604'),
 ('DT_RDBMS', 3, 'maurine.yglesias@epita.fr', '2020-11-02', '19:00:00', '23:00:00', 'ON-CAMPUS', 2020, 'FALL', '608'),
-('DT_RDBMS', 3, 'maurine.yglesias@epita.fr', '2020-11-03', '20:00:00', '00:00:00', 'REMOTE', 2020, 'FALL', NULL),
 ('DT_RDBMS', 3, 'maurine.yglesias@epita.fr', '2020-11-04', '21:00:00', '01:00:00', 'ON-CAMPUS', 2020, 'FALL', '606'),
 ('DT_RDBMS', 3, 'maurine.yglesias@epita.fr', '2020-11-05', '22:00:00', '02:00:00', 'ON-CAMPUS', 2020, 'FALL', '606'),
 ('CS_SOFTWARE_SECURITY', 1, 'lisha.centini@epita.fr', '2020-11-06', '23:00:00', '03:00:00', 'ON-CAMPUS', 2020, 'FALL', '604'),
 ('CS_SOFTWARE_SECURITY', 1, 'lisha.centini@epita.fr', '2020-11-07', '00:00:00', '04:00:00', 'ON-CAMPUS', 2020, 'FALL', '608'),
-('CS_SOFTWARE_SECURITY', 1, 'lisha.centini@epita.fr', '2020-11-08', '01:00:00', '05:00:00', 'REMOTE', 2020, 'FALL', NULL),
 ('CS_SOFTWARE_SECURITY', 1, 'lisha.centini@epita.fr', '2020-11-09', '02:00:00', '06:00:00', 'ON-CAMPUS', 2020, 'FALL', '606'),
 ('CS_SOFTWARE_SECURITY', 1, 'lisha.centini@epita.fr', '2020-11-10', '03:00:00', '07:00:00', 'ON-CAMPUS', 2020, 'FALL', '606'),
 ('CS_SOFTWARE_SECURITY', 1, 'lisha.centini@epita.fr', '2020-11-11', '04:00:00', '08:00:00', 'ON-CAMPUS', 2020, 'FALL', '604'),
 ('MK_COM_FOR_LEADER', 1, 'alisha.slusarski@epita.fr', '2020-11-12', '05:00:00', '09:00:00', 'ON-CAMPUS', 2020, 'FALL', '608'),
-('MK_COM_FOR_LEADER', 1, 'alisha.slusarski@epita.fr', '2020-11-13', '06:00:00', '10:00:00', 'REMOTE', 2020, 'FALL', NULL),
 ('MK_COM_FOR_LEADER', 1, 'alisha.slusarski@epita.fr', '2020-11-14', '07:00:00', '11:00:00', 'ON-CAMPUS', 2020, 'FALL', '606'),
 ('MK_COM_FOR_LEADER', 1, 'alisha.slusarski@epita.fr', '2020-11-15', '08:00:00', '12:00:00', 'ON-CAMPUS', 2020, 'FALL', '606'),
 ('MK_COM_FOR_LEADER', 1, 'alisha.slusarski@epita.fr', '2020-11-16', '09:00:00', '13:00:00', 'ON-CAMPUS', 2020, 'FALL', '606'),
@@ -2149,11 +2154,9 @@ INSERT INTO `sessions` (`session_course_ref`, `session_course_rev_ref`, `session
 ('AI_DATA_PREP', 1, 'art.venere@epita.fr', '2020-11-27', '20:00:00', '00:00:00', 'ON-CAMPUS', 2021, 'SPRING', '606'),
 ('AI_DATA_PREP', 1, 'art.venere@epita.fr', '2020-11-28', '21:00:00', '01:00:00', 'ON-CAMPUS', 2021, 'SPRING', '606'),
 ('AI_DATA_SCIENCE_IN_PROD', 1, 'ezekiel.chui@epita.fr', '2020-11-29', '22:00:00', '02:00:00', 'ON-CAMPUS', 2021, 'SPRING', '606'),
-('AI_DATA_SCIENCE_IN_PROD', 1, 'ezekiel.chui@epita.fr', '2020-11-30', '23:00:00', '03:00:00', 'REMOTE', 2021, 'SPRING', NULL),
 ('AI_DATA_SCIENCE_IN_PROD', 1, 'ezekiel.chui@epita.fr', '2020-12-01', '00:00:00', '04:00:00', 'ON-CAMPUS', 2021, 'SPRING', '608'),
 ('AI_DATA_SCIENCE_IN_PROD', 1, 'ezekiel.chui@epita.fr', '2020-12-02', '01:00:00', '05:00:00', 'ON-CAMPUS', 2021, 'SPRING', '606'),
 ('AI_DATA_SCIENCE_IN_PROD', 1, 'ezekiel.chui@epita.fr', '2020-12-03', '02:00:00', '06:00:00', 'ON-CAMPUS', 2021, 'SPRING', '606'),
-('CS_DATA_PRIV', 1, 'valentine.gillian@epita.fr', '2020-12-04', '03:00:00', '07:00:00', 'REMOTE', 2021, 'SPRING', NULL),
 ('CS_DATA_PRIV', 1, 'valentine.gillian@epita.fr', '2020-12-05', '04:00:00', '08:00:00', 'ON-CAMPUS', 2021, 'SPRING', '604'),
 ('CS_DATA_PRIV', 1, 'valentine.gillian@epita.fr', '2020-12-06', '05:00:00', '09:00:00', 'ON-CAMPUS', 2021, 'SPRING', '606'),
 ('SE_ADV_JAVA', 2, 'blair.malet@epita.fr', '2020-12-07', '06:00:00', '10:00:00', 'ON-CAMPUS', 2021, 'SPRING', '608'),
@@ -2167,13 +2170,10 @@ INSERT INTO `sessions` (`session_course_ref`, `session_course_rev_ref`, `session
 ('PM_AGILE', 2, 'alisha.slusarski@epita.fr', '2020-12-15', '14:00:00', '18:00:00', 'ON-CAMPUS', 2021, 'SPRING', '605'),
 ('PM_AGILE', 2, 'alisha.slusarski@epita.fr', '2020-12-16', '15:00:00', '19:00:00', 'ON-CAMPUS', 2021, 'SPRING', '606'),
 ('SE_ADV_DB', 2, 'maurine.yglesias@epita.fr', '2020-12-17', '16:00:00', '20:00:00', 'ON-CAMPUS', 2021, 'SPRING', '606'),
-('SE_ADV_DB', 2, 'maurine.yglesias@epita.fr', '2020-12-18', '17:00:00', '21:00:00', 'REMOTE', 2021, 'SPRING', NULL),
 ('SE_ADV_DB', 2, 'maurine.yglesias@epita.fr', '2020-12-19', '18:00:00', '22:00:00', 'ON-CAMPUS', 2021, 'SPRING', '604'),
 ('SE_ADV_DB', 2, 'maurine.yglesias@epita.fr', '2020-12-20', '19:00:00', '23:00:00', 'ON-CAMPUS', 2021, 'SPRING', '608'),
-('SE_ADV_DB', 2, 'maurine.yglesias@epita.fr', '2020-12-21', '20:00:00', '00:00:00', 'REMOTE', 2021, 'SPRING', NULL),
 ('SE_ADV_DB', 2, 'maurine.yglesias@epita.fr', '2020-12-22', '21:00:00', '01:00:00', 'ON-CAMPUS', 2021, 'SPRING', '606'),
 ('SE_ADV_DB', 2, 'maurine.yglesias@epita.fr', '2020-12-23', '22:00:00', '02:00:00', 'ON-CAMPUS', 2021, 'SPRING', '606'),
-('SE_ADV_DB', 2, 'maurine.yglesias@epita.fr', '2020-12-24', '23:00:00', '03:00:00', 'REMOTE', 2021, 'SPRING', NULL),
 ('SE_ADV_DB', 2, 'maurine.yglesias@epita.fr', '2020-12-25', '00:00:00', '04:00:00', 'ON-CAMPUS', 2021, 'SPRING', '606'),
 ('SE_ADV_DB', 2, 'maurine.yglesias@epita.fr', '2020-12-26', '01:00:00', '05:00:00', 'ON-CAMPUS', 2021, 'SPRING', '606'),
 ('SE_ADV_JS', 3, 'brock.bolognia@epita.fr', '2020-12-27', '02:00:00', '06:00:00', 'ON-CAMPUS', 2021, 'SPRING', '606'),
@@ -2212,100 +2212,21 @@ INSERT INTO `sessions` (`session_course_ref`, `session_course_rev_ref`, `session
 ('PG_PYTHON', 2, 'micaela.rhymes@epita.fr', '2021-01-29', '11:00:00', '15:00:00', 'ON-CAMPUS', 2021, 'SPRING', '604'),
 ('PG_PYTHON', 2, 'micaela.rhymes@epita.fr', '2021-01-30', '12:00:00', '16:00:00', 'ON-CAMPUS', 2021, 'SPRING', 'SM14'),
 ('PG_PYTHON', 2, 'micaela.rhymes@epita.fr', '2021-01-31', '13:00:00', '17:00:00', 'ON-CAMPUS', 2021, 'SPRING', '604'),
-('PG_PYTHON', 2, 'micaela.rhymes@epita.fr', '2021-02-01', '14:00:00', '18:00:00', 'REMOTE', 2021, 'SPRING', NULL),
-('PG_PYTHON', 2, 'micaela.rhymes@epita.fr', '2021-02-02', '15:00:00', '19:00:00', 'REMOTE', 2021, 'SPRING', NULL),
-('PG_PYTHON', 2, 'micaela.rhymes@epita.fr', '2021-02-03', '16:00:00', '20:00:00', 'REMOTE', 2021, 'FALL', NULL),
-('AI_DATA_PREP', 1, 'art.venere@epita.fr', '2021-02-04', '17:00:00', '21:00:00', 'REMOTE', 2021, 'FALL', NULL),
-('AI_DATA_PREP', 1, 'art.venere@epita.fr', '2021-02-05', '18:00:00', '22:00:00', 'REMOTE', 2021, 'FALL', NULL),
-('AI_DATA_PREP', 1, 'art.venere@epita.fr', '2021-02-06', '19:00:00', '23:00:00', 'REMOTE', 2021, 'FALL', NULL),
-('AI_DATA_SCIENCE_IN_PROD', 1, 'ezekiel.chui@epita.fr', '2021-02-07', '20:00:00', '00:00:00', 'REMOTE', 2021, 'FALL', NULL),
-('AI_DATA_SCIENCE_IN_PROD', 1, 'ezekiel.chui@epita.fr', '2021-02-08', '21:00:00', '01:00:00', 'REMOTE', 2021, 'FALL', NULL),
-('AI_DATA_SCIENCE_IN_PROD', 1, 'ezekiel.chui@epita.fr', '2021-02-09', '22:00:00', '02:00:00', 'REMOTE', 2021, 'FALL', NULL),
-('AI_DATA_SCIENCE_IN_PROD', 1, 'ezekiel.chui@epita.fr', '2021-02-10', '23:00:00', '03:00:00', 'REMOTE', 2021, 'FALL', NULL),
-('AI_DATA_SCIENCE_IN_PROD', 1, 'ezekiel.chui@epita.fr', '2021-02-11', '00:00:00', '04:00:00', 'REMOTE', 2021, 'FALL', NULL),
-('CS_DATA_PRIV', 1, 'valentine.gillian@epita.fr', '2021-02-12', '01:00:00', '05:00:00', 'REMOTE', 2021, 'SPRING', NULL),
-('CS_DATA_PRIV', 1, 'valentine.gillian@epita.fr', '2021-02-13', '02:00:00', '06:00:00', 'REMOTE', 2021, 'SPRING', NULL),
-('CS_DATA_PRIV', 1, 'valentine.gillian@epita.fr', '2021-02-14', '03:00:00', '07:00:00', 'REMOTE', 2021, 'SPRING', NULL),
-('PM_AGILE', 2, 'art.venere@epita.fr', '2023-09-02', '00:00:00', '00:00:00', NULL, 2021, 'SPRING', NULL),
-('SE_ADV_DB', 2, 'ilene.eroman@epita.fr', '2023-09-02', '00:00:00', '00:00:00', NULL, 2021, 'SPRING', NULL),
-('CS_SOFTWARE_SECURITY', 1, 'abel.maclead@epita.fr', '2023-09-02', '00:00:00', '00:00:00', NULL, 2021, 'SPRING', NULL),
-('SE_ADV_DB', 2, 'abel.maclead@epita.fr', '2023-09-03', '00:00:00', '00:00:00', NULL, 2021, 'SPRING', NULL),
-('SE_ADV_DB', 2, 'abel.maclead@epita.fr', '2023-09-04', '00:00:00', '00:00:00', NULL, 2021, 'SPRING', NULL),
-('SE_ADV_DB', 2, 'abel.maclead@epita.fr', '2023-09-05', '00:00:00', '00:00:00', NULL, 2021, 'SPRING', NULL),
-('SE_ADV_DB', 2, 'abel.maclead@epita.fr', '2023-09-06', '00:00:00', '00:00:00', NULL, 2021, 'SPRING', NULL),
-('AI_DATA_PREP', 1, 'abel.maclead@epita.fr', '2023-09-02', '00:00:00', '00:00:00', NULL, 2021, 'SPRING', NULL),
-('AI_DATA_PREP', 1, 'abel.maclead@epita.fr', '2023-09-03', '00:00:00', '00:00:00', NULL, 2021, 'SPRING', NULL),
-('AI_DATA_PREP', 1, 'abel.maclead@epita.fr', '2023-09-04', '00:00:00', '00:00:00', NULL, 2021, 'SPRING', NULL),
-('AI_DATA_PREP', 1, 'abel.maclead@epita.fr', '2023-09-05', '00:00:00', '00:00:00', NULL, 2021, 'SPRING', NULL),
-('AI_DATA_PREP', 1, 'abel.maclead@epita.fr', '2023-09-06', '00:00:00', '00:00:00', NULL, 2021, 'SPRING', NULL),
-('AI_DATA_PREP', 1, 'abel.maclead@epita.fr', '2023-09-07', '00:00:00', '00:00:00', NULL, 2021, 'SPRING', NULL),
-('AI_DATA_PREP', 1, 'abel.maclead@epita.fr', '2023-09-08', '00:00:00', '00:00:00', NULL, 2021, 'SPRING', NULL),
-('AI_DATA_PREP', 1, 'abel.maclead@epita.fr', '2023-09-09', '00:00:00', '00:00:00', NULL, 2021, 'SPRING', NULL),
-('AI_DATA_PREP', 1, 'abel.maclead@epita.fr', '2023-09-10', '00:00:00', '00:00:00', NULL, 2021, 'SPRING', NULL),
-('AI_DATA_PREP', 1, 'abel.maclead@epita.fr', '2023-09-11', '00:00:00', '00:00:00', NULL, 2021, 'SPRING', NULL),
-('AI_DATA_PREP', 1, 'abel.maclead@epita.fr', '2023-09-12', '00:00:00', '00:00:00', NULL, 2021, 'SPRING', NULL),
-('AI_DATA_PREP', 1, 'abel.maclead@epita.fr', '2023-09-13', '00:00:00', '00:00:00', NULL, 2021, 'SPRING', NULL),
-('AI_DATA_PREP', 1, 'abel.maclead@epita.fr', '2023-09-14', '00:00:00', '00:00:00', NULL, 2021, 'SPRING', NULL),
-('AI_DATA_PREP', 1, 'abel.maclead@epita.fr', '2023-09-15', '00:00:00', '00:00:00', NULL, 2021, 'SPRING', NULL),
-('AI_DATA_PREP', 1, 'abel.maclead@epita.fr', '2023-09-16', '00:00:00', '00:00:00', NULL, 2021, 'SPRING', NULL),
-('SE_ADV_JAVA', 2, 'blair.malet@epita.fr', '2023-09-02', '00:00:00', '00:00:00', NULL, 2021, 'SPRING', NULL),
-('SE_ADV_JAVA', 2, 'blair.malet@epita.fr', '2023-09-03', '00:00:00', '00:00:00', NULL, 2021, 'SPRING', NULL),
-('SE_ADV_JAVA', 2, 'blair.malet@epita.fr', '2023-09-04', '00:00:00', '00:00:00', NULL, 2021, 'SPRING', NULL),
-('SE_ADV_JAVA', 2, 'blair.malet@epita.fr', '2023-09-05', '00:00:00', '00:00:00', NULL, 2021, 'SPRING', NULL),
-('SE_ADV_JAVA', 2, 'blair.malet@epita.fr', '2023-09-06', '00:00:00', '00:00:00', NULL, 2021, 'SPRING', NULL),
-('AIs_Test', 1, 'abel.maclead@epita.fr', '2023-09-02', '00:00:00', '00:00:00', NULL, 2021, 'SPRING', NULL),
-('AIs_Test', 1, 'abel.maclead@epita.fr', '2023-09-03', '00:00:00', '00:00:00', NULL, 2021, 'SPRING', NULL),
-('AIs_Test', 1, 'abel.maclead@epita.fr', '2023-09-04', '00:00:00', '00:00:00', NULL, 2021, 'SPRING', NULL),
-('AIs_Test', 1, 'abel.maclead@epita.fr', '2023-09-05', '00:00:00', '00:00:00', NULL, 2021, 'SPRING', NULL),
-('AIs_Test', 1, 'abel.maclead@epita.fr', '2023-09-06', '00:00:00', '00:00:00', NULL, 2021, 'SPRING', NULL),
-('AIs_Test', 1, 'abel.maclead@epita.fr', '2023-09-07', '00:00:00', '00:00:00', NULL, 2021, 'SPRING', NULL),
-('SE_ADV_DB', 2, 'brock.bolognia@epita.fr', '2023-09-07', '00:00:00', '00:00:00', NULL, 2021, 'SPRING', NULL),
-('SE_ADV_DB', 2, 'brock.bolognia@epita.fr', '2023-09-08', '00:00:00', '00:00:00', NULL, 2021, 'SPRING', NULL),
-('SE_ADV_DB', 2, 'brock.bolognia@epita.fr', '2023-09-09', '00:00:00', '00:00:00', NULL, 2021, 'SPRING', NULL),
-('SE_ADV_DB', 2, 'brock.bolognia@epita.fr', '2023-09-10', '00:00:00', '00:00:00', NULL, 2021, 'SPRING', NULL),
-('SE_ADV_DB', 2, 'brock.bolognia@epita.fr', '2023-09-11', '00:00:00', '00:00:00', NULL, 2021, 'SPRING', NULL),
-('SE_ADV_DB', 2, 'brock.bolognia@epita.fr', '2023-09-12', '00:00:00', '00:00:00', NULL, 2021, 'SPRING', NULL),
-('SE_ADV_DB', 2, 'brock.bolognia@epita.fr', '2023-09-13', '00:00:00', '00:00:00', NULL, 2021, 'SPRING', NULL),
-('SE_ADV_DB', 2, 'brock.bolognia@epita.fr', '2023-09-14', '00:00:00', '00:00:00', NULL, 2021, 'SPRING', NULL),
-('SE_ADV_DB', 2, 'brock.bolognia@epita.fr', '2023-09-15', '00:00:00', '00:00:00', NULL, 2021, 'SPRING', NULL),
-('SE_ADV_DB', 2, 'brock.bolognia@epita.fr', '2023-09-16', '00:00:00', '00:00:00', NULL, 2021, 'SPRING', NULL),
-('SE_ADV_DB', 2, 'brock.bolognia@epita.fr', '2023-09-17', '00:00:00', '00:00:00', NULL, 2021, 'SPRING', NULL),
-('SE_ADV_DB', 2, 'brock.bolognia@epita.fr', '2023-09-18', '00:00:00', '00:00:00', NULL, 2021, 'SPRING', NULL),
-('SE_ADV_DB', 2, 'brock.bolognia@epita.fr', '2023-09-19', '00:00:00', '00:00:00', NULL, 2021, 'SPRING', NULL),
-('SE_ADV_DB', 2, 'brock.bolognia@epita.fr', '2023-09-20', '00:00:00', '00:00:00', NULL, 2021, 'SPRING', NULL),
-('SE_ADV_DB', 2, 'brock.bolognia@epita.fr', '2023-09-21', '00:00:00', '00:00:00', NULL, 2021, 'SPRING', NULL),
-('SE_ADV_DB', 2, 'brock.bolognia@epita.fr', '2023-09-22', '00:00:00', '00:00:00', NULL, 2021, 'SPRING', NULL),
-('DT_RDBMS', 3, 'alisha.slusarski@epita.fr', '2023-09-04', '00:00:00', '00:00:00', NULL, 2020, 'FALL', NULL),
-('DT_RDBMS', 3, 'alisha.slusarski@epita.fr', '2023-09-05', '00:00:00', '00:00:00', NULL, 2020, 'FALL', NULL),
-('DT_RDBMS', 3, 'alisha.slusarski@epita.fr', '2023-09-06', '00:00:00', '00:00:00', NULL, 2020, 'FALL', NULL),
-('DT_RDBMS', 3, 'alisha.slusarski@epita.fr', '2023-09-07', '00:00:00', '00:00:00', NULL, 2020, 'FALL', NULL),
-('PG_PYTHON', 2, 'art.venere@epita.fr', '2023-09-04', '00:00:00', '00:00:00', NULL, 2020, 'FALL', NULL),
-('PG_PYTHON', 2, 'art.venere@epita.fr', '2023-09-05', '00:00:00', '00:00:00', NULL, 2020, 'FALL', NULL),
-('PG_PYTHON', 2, 'art.venere@epita.fr', '2023-09-06', '00:00:00', '00:00:00', NULL, 2020, 'FALL', NULL),
-('PG_PYTHON', 2, 'art.venere@epita.fr', '2023-09-07', '00:00:00', '00:00:00', NULL, 2020, 'FALL', NULL),
-('PG_PYTHON', 2, 'art.venere@epita.fr', '2023-09-08', '00:00:00', '00:00:00', NULL, 2020, 'FALL', NULL),
-('PG_PYTHON', 2, 'art.venere@epita.fr', '2023-09-09', '00:00:00', '00:00:00', NULL, 2020, 'FALL', NULL),
-('PG_PYTHON', 2, 'art.venere@epita.fr', '2023-09-10', '00:00:00', '00:00:00', NULL, 2020, 'FALL', NULL),
-('PG_PYTHON', 2, 'art.venere@epita.fr', '2023-09-11', '00:00:00', '00:00:00', NULL, 2020, 'FALL', NULL),
-('PG_PYTHON', 2, 'art.venere@epita.fr', '2023-09-12', '00:00:00', '00:00:00', NULL, 2020, 'FALL', NULL),
-('PG_PYTHON', 2, 'art.venere@epita.fr', '2023-09-13', '00:00:00', '00:00:00', NULL, 2020, 'FALL', NULL),
-('SE_ADV_JS', 3, 'lenna.paprocki@epita.fr', '2023-09-06', '00:00:00', '00:00:00', NULL, 2021, 'SPRING', NULL),
-('SE_ADV_JS', 3, 'lenna.paprocki@epita.fr', '2023-09-07', '00:00:00', '00:00:00', NULL, 2021, 'SPRING', NULL),
-('SE_ADV_JS', 3, 'lenna.paprocki@epita.fr', '2023-09-08', '00:00:00', '00:00:00', NULL, 2021, 'SPRING', NULL),
-('SE_ADV_JS', 3, 'lenna.paprocki@epita.fr', '2023-09-09', '00:00:00', '00:00:00', NULL, 2021, 'SPRING', NULL),
-('SE_ADV_JS', 3, 'delisa.crupi@epita.fr', '2023-09-10', '00:00:00', '00:00:00', NULL, 2020, 'FALL', NULL),
-('SE_ADV_JS', 3, 'delisa.crupi@epita.fr', '2023-09-11', '00:00:00', '00:00:00', NULL, 2020, 'FALL', NULL),
-('SE_ADV_JS', 3, 'delisa.crupi@epita.fr', '2023-09-12', '00:00:00', '00:00:00', NULL, 2020, 'FALL', NULL),
-('SE_ADV_JS', 3, 'delisa.crupi@epita.fr', '2023-09-13', '00:00:00', '00:00:00', NULL, 2020, 'FALL', NULL),
-('SE_ADV_JS', 3, 'delisa.crupi@epita.fr', '2023-09-14', '00:00:00', '00:00:00', NULL, 2020, 'FALL', NULL),
-('SE_ADV_JS', 3, 'delisa.crupi@epita.fr', '2023-09-15', '00:00:00', '00:00:00', NULL, 2020, 'FALL', NULL),
-('SE_ADV_JS', 3, 'delisa.crupi@epita.fr', '2023-09-16', '00:00:00', '00:00:00', NULL, 2020, 'FALL', NULL),
-('SE_ADV_JS', 3, 'delisa.crupi@epita.fr', '2023-09-17', '00:00:00', '00:00:00', NULL, 2020, 'FALL', NULL),
-('SE_ADV_JS', 3, 'delisa.crupi@epita.fr', '2023-09-18', '00:00:00', '00:00:00', NULL, 2020, 'FALL', NULL),
-('SE_ADV_JS', 3, 'delisa.crupi@epita.fr', '2023-09-19', '00:00:00', '00:00:00', NULL, 2020, 'FALL', NULL),
-('SE_ADV_JS', 3, 'delisa.crupi@epita.fr', '2023-09-20', '00:00:00', '00:00:00', NULL, 2020, 'FALL', NULL),
-('SE_ADV_JS', 3, 'delisa.crupi@epita.fr', '2023-09-21', '00:00:00', '00:00:00', NULL, 2020, 'FALL', NULL),
-('SE_ADV_JS', 3, 'delisa.crupi@epita.fr', '2023-09-22', '00:00:00', '00:00:00', NULL, 2020, 'FALL', NULL);
+('MK_COM_FOR_LEADER', 1, 'cory.gibes@epita.fr', '2023-09-14', '00:00:00', '00:00:00', NULL, 2020, 'FALL', NULL),
+('MK_COM_FOR_LEADER', 1, 'cory.gibes@epita.fr', '2023-09-10', '00:00:00', '00:00:00', NULL, 2020, 'FALL', NULL),
+('MK_COM_FOR_LEADER', 1, 'cory.gibes@epita.fr', '2023-09-11', '00:00:00', '00:00:00', NULL, 2020, 'FALL', NULL),
+('MK_COM_FOR_LEADER', 1, 'cory.gibes@epita.fr', '2023-09-12', '00:00:00', '00:00:00', NULL, 2020, 'FALL', NULL),
+('MK_COM_FOR_LEADER', 1, 'cory.gibes@epita.fr', '2023-09-13', '00:00:00', '00:00:00', NULL, 2020, 'FALL', NULL),
+('AIS_algo', 1, 'abel.maclead@epita.fr', '2023-09-10', '00:00:00', '00:00:00', NULL, 2020, 'FALL', NULL),
+('AIS_algo', 1, 'abel.maclead@epita.fr', '2023-09-11', '00:00:00', '00:00:00', NULL, 2020, 'FALL', NULL),
+('AIS_algo', 1, 'abel.maclead@epita.fr', '2023-09-12', '00:00:00', '00:00:00', NULL, 2020, 'FALL', NULL),
+('AIS_algo', 1, 'abel.maclead@epita.fr', '2023-09-13', '00:00:00', '00:00:00', NULL, 2020, 'FALL', NULL),
+('AIS_algo', 1, 'abel.maclead@epita.fr', '2023-09-14', '00:00:00', '00:00:00', NULL, 2020, 'FALL', NULL),
+('AIS_algo', 1, 'abel.maclead@epita.fr', '2023-09-19', '00:00:00', '00:00:00', NULL, 2020, 'FALL', NULL),
+('AIS_algo', 1, 'abel.maclead@epita.fr', '2023-09-15', '00:00:00', '00:00:00', NULL, 2020, 'FALL', NULL),
+('AIS_algo', 1, 'abel.maclead@epita.fr', '2023-09-16', '00:00:00', '00:00:00', NULL, 2020, 'FALL', NULL),
+('AIS_algo', 1, 'abel.maclead@epita.fr', '2023-09-17', '00:00:00', '00:00:00', NULL, 2020, 'FALL', NULL),
+('AIS_algo', 1, 'abel.maclead@epita.fr', '2023-09-18', '00:00:00', '00:00:00', NULL, 2020, 'FALL', NULL);
 
 -- --------------------------------------------------------
 
@@ -2369,7 +2290,6 @@ INSERT INTO `students` (`student_epita_email`, `student_contact_ref`, `student_e
 ('myra.munns@epita.fr', 'mmunns@cox.net', 'completed', 'FALL', 2020, 'CS'),
 ('emerson.bowley@epita.fr', 'emerson.bowley@bowley.org', 'completed', 'FALL', 2020, 'ISM'),
 ('ernie.stenseth@epita.fr', 'ernie_stenseth@aol.com', 'completed', 'SPRING', 2021, 'ISM'),
-('Grigoli.Patsatsia@epita.fr', 'Gegapacacia@gmail.com', 'Confirmed', 'FALL', 2020, 'AIs'),
 ('lavera.perin@epita.fr', 'lperin@perin.org', 'completed', 'SPRING', 2021, 'CS'),
 ('carmelina.lindall@epita.fr', 'carmelina_lindall@lindall.com', 'completed', 'SPRING', 2021, 'DSA'),
 ('erick.ferencz@epita.fr', 'erick.ferencz@aol.com', 'completed', 'FALL', 2020, 'AIs'),
@@ -2378,8 +2298,7 @@ INSERT INTO `students` (`student_epita_email`, `student_contact_ref`, `student_e
 ('tyra.shields@epita.fr', 'tshields@gmail.com', 'completed', 'SPRING', 2021, 'CS'),
 ('danica.bruschke@epita.fr', 'danica_bruschke@gmail.com', 'completed', 'SPRING', 2021, 'DSA'),
 ('kallie.blackwood@epita.fr', 'kallie.blackwood@gmail.com', 'completed', 'SPRING', 2021, 'SE'),
-('raunak.Bhansali@epita.fr', 'raunak.bhansali17@gmail.com', 'Confirmed', 'FALL', 2020, 'AIs'),
-('Aaaaaaaaaaaaaas.AaSSSAA@epita.fr', 'aaaa@gmail.com', 'Selected', 'FALL', 2020, 'ISM'),
+('Grigoli.Patsatsia@epita.fr', 'gegapacacia@gmail.com', 'Confirmed', 'FALL', 2020, 'AIs'),
 ('Elene.Amiredjibi@epita.fr', 'eleneami@gmail.com', 'Confirmed', 'FALL', 2020, 'AIs');
 
 -- --------------------------------------------------------
@@ -2400,10 +2319,8 @@ CREATE TABLE IF NOT EXISTS `student_login` (
 --
 
 INSERT INTO `student_login` (`student_epita_email_ref`, `student_password`) VALUES
-('Aaaaaaaaaaaaaas.AaSSSAA@epita.fr', '8a8ZssLp'),
 ('albina.glick@epita.fr', 'G9UxvYfI'),
 ('ammie.corrio@epita.fr', 'TEhUEtwP'),
-('raunak.Bhansali@epita.fr', '5Ir3sMps'),
 ('bette.nicka@epita.fr', 'FNe0UhLH'),
 ('blondell.pugh@epita.fr', 'p0xfP4Ko'),
 ('cammy.albares@epita.fr', 'Ik1Lpcpp'),
@@ -2449,7 +2366,7 @@ INSERT INTO `student_login` (`student_epita_email_ref`, `student_password`) VALU
 ('viva.toelkes@epita.fr', 'nHn4m73S'),
 ('wilda.giguere@epita.fr', '19ufJSyH'),
 ('yuki.whobrey@epita.fr', 'kqY7xe5x'),
-('Grigoli.Patsatsia@epita.fr', 'I3S3xSy0'),
+('Grigoli.Patsatsia@epita.fr', 'RVMoqxw8'),
 ('', 'ajyfjHUC'),
 ('asdsda.dssdasd@epita.fr', 'OtTtZqKs'),
 ('Elene.Amiredjibi@epita.fr', '6KUocTA9');
