@@ -25,10 +25,10 @@ try {
     //Server settings
     $mail->SMTPDebug = 2; // Enable verbose debug output
     $mail->isSMTP(); // Set mailer to use SMTP
-    $mail->Host = 'smtp-relay.brevo.com'; // Specify main and backup SMTP servers
+    $mail->Host = ''; // Specify main and backup SMTP servers
     $mail->SMTPAuth = true; // Enable SMTP authentication
-    $mail->Username = "gegapacacia@gmail.com";
-    $mail->Password = "WOjKTVqDsIJGB0vx";
+    $mail->Username = "";
+    $mail->Password = "";
     $mail->Port = 587; // TCP port to connect to
     //Recipients
     $mail->setFrom('StudentPortal@Epita.fr', 'EPITA'); //This is the email your form sends From
